@@ -28,10 +28,11 @@ namespace Kosarka_ITivity_Dejan_Savanovic.DBModels
         public int GradID { get; set; }
         public int TimID { get; set; }
         public int PozicijaID { get; set; }
-        public byte[] Slika { get; set; }
+        public Nullable<int> SlikaID { get; set; }
     
         public virtual Grad Grad { get; set; }
         public virtual Pozicija Pozicija { get; set; }
+        public virtual Slika Slika { get; set; }
         public virtual Tim Tim { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UcinakIgraca> UcinakIgracas { get; set; }

@@ -24,7 +24,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css"));
         }
     }
 }

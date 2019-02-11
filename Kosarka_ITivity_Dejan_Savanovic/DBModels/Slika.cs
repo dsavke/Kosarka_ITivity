@@ -12,26 +12,21 @@ namespace Kosarka_ITivity_Dejan_Savanovic.DBModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Utakmica
+    public partial class Slika
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Utakmica()
+        public Slika()
         {
-            this.UcinakIgracas = new HashSet<UcinakIgraca>();
+            this.Igracs = new HashSet<Igrac>();
+            this.Tims = new HashSet<Tim>();
         }
     
-        public int UtakmicaID { get; set; }
-        public int KoloID { get; set; }
-        public System.DateTime DatumOdigravanja { get; set; }
-        public int DomaciTim { get; set; }
-        public int GostujuciTim { get; set; }
-        public byte PoeniDomaciTim { get; set; }
-        public byte PoeniGostujuciTim { get; set; }
+        public int SlikaID { get; set; }
+        public byte[] Slika1 { get; set; }
     
-        public virtual Kolo Kolo { get; set; }
-        public virtual Tim DomaciTimPokazatelj { get; set; }
-        public virtual Tim GostujuciTimPokazatelj { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UcinakIgraca> UcinakIgracas { get; set; }
+        public virtual ICollection<Igrac> Igracs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tim> Tims { get; set; }
     }
 }

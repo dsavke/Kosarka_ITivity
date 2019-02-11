@@ -29,6 +29,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.DBModels
         public virtual DbSet<Igrac> Igracs { get; set; }
         public virtual DbSet<Kolo> Koloes { get; set; }
         public virtual DbSet<Pozicija> Pozicijas { get; set; }
+        public virtual DbSet<Slika> Slikas { get; set; }
         public virtual DbSet<Tim> Tims { get; set; }
         public virtual DbSet<UcinakIgraca> UcinakIgracas { get; set; }
         public virtual DbSet<Utakmica> Utakmicas { get; set; }

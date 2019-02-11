@@ -24,7 +24,7 @@
           <Property Name="GradID" Type="int" Nullable="false" />
           <Property Name="TimID" Type="int" Nullable="false" />
           <Property Name="PozicijaID" Type="int" Nullable="false" />
-          <Property Name="Slika" Type="image" />
+          <Property Name="SlikaID" Type="int" />
         </EntityType>
         <EntityType Name="Kolo">
           <Key>
@@ -43,6 +43,13 @@
           <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SkraceniNaziv" Type="nchar" MaxLength="2" Nullable="false" />
         </EntityType>
+        <EntityType Name="Slika">
+          <Key>
+            <PropertyRef Name="SlikaID" />
+          </Key>
+          <Property Name="SlikaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Slika" Type="image" Nullable="false" />
+        </EntityType>
         <EntityType Name="Tim">
           <Key>
             <PropertyRef Name="TimID" />
@@ -52,7 +59,7 @@
           <Property Name="GradID" Type="int" Nullable="false" />
           <Property Name="NazivStadiona" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Trener" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Slika" Type="image" />
+          <Property Name="SlikaID" Type="int" />
         </EntityType>
         <EntityType Name="UcinakIgraca">
           <Key>
@@ -112,6 +119,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Igrac_Slika">
+          <End Role="Slika" Type="Self.Slika" Multiplicity="0..1" />
+          <End Role="Igrac" Type="Self.Igrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slika">
+              <PropertyRef Name="SlikaID" />
+            </Principal>
+            <Dependent Role="Igrac">
+              <PropertyRef Name="SlikaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Igrac_Tim">
           <End Role="Tim" Type="Self.Tim" Multiplicity="1" />
           <End Role="Igrac" Type="Self.Igrac" Multiplicity="*" />
@@ -133,6 +152,18 @@
             </Principal>
             <Dependent Role="Tim">
               <PropertyRef Name="GradID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tim_Slika">
+          <End Role="Slika" Type="Self.Slika" Multiplicity="0..1" />
+          <End Role="Tim" Type="Self.Tim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slika">
+              <PropertyRef Name="SlikaID" />
+            </Principal>
+            <Dependent Role="Tim">
+              <PropertyRef Name="SlikaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -213,6 +244,7 @@
           <EntitySet Name="Igrac" EntityType="Self.Igrac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kolo" EntityType="Self.Kolo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pozicija" EntityType="Self.Pozicija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slika" EntityType="Self.Slika" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tim" EntityType="Self.Tim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UcinakIgraca" EntityType="Self.UcinakIgraca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utakmica" EntityType="Self.Utakmica" Schema="dbo" store:Type="Tables" />
@@ -224,12 +256,20 @@
             <End Role="Pozicija" EntitySet="Pozicija" />
             <End Role="Igrac" EntitySet="Igrac" />
           </AssociationSet>
+          <AssociationSet Name="FK_Igrac_Slika" Association="Self.FK_Igrac_Slika">
+            <End Role="Slika" EntitySet="Slika" />
+            <End Role="Igrac" EntitySet="Igrac" />
+          </AssociationSet>
           <AssociationSet Name="FK_Igrac_Tim" Association="Self.FK_Igrac_Tim">
             <End Role="Tim" EntitySet="Tim" />
             <End Role="Igrac" EntitySet="Igrac" />
           </AssociationSet>
           <AssociationSet Name="FK_Tim_Grad" Association="Self.FK_Tim_Grad">
             <End Role="Grad" EntitySet="Grad" />
+            <End Role="Tim" EntitySet="Tim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tim_Slika" Association="Self.FK_Tim_Slika">
+            <End Role="Slika" EntitySet="Slika" />
             <End Role="Tim" EntitySet="Tim" />
           </AssociationSet>
           <AssociationSet Name="FK_UcinakIgraca_Igrac" Association="Self.FK_UcinakIgraca_Igrac">
@@ -266,6 +306,7 @@
           <EntitySet Name="Igracs" EntityType="Kosarka_Model.Igrac" />
           <EntitySet Name="Koloes" EntityType="Kosarka_Model.Kolo" />
           <EntitySet Name="Pozicijas" EntityType="Kosarka_Model.Pozicija" />
+          <EntitySet Name="Slikas" EntityType="Kosarka_Model.Slika" />
           <EntitySet Name="Tims" EntityType="Kosarka_Model.Tim" />
           <EntitySet Name="UcinakIgracas" EntityType="Kosarka_Model.UcinakIgraca" />
           <EntitySet Name="Utakmicas" EntityType="Kosarka_Model.Utakmica" />
@@ -281,6 +322,10 @@
             <End Role="Pozicija" EntitySet="Pozicijas" />
             <End Role="Igrac" EntitySet="Igracs" />
           </AssociationSet>
+          <AssociationSet Name="FK_Igrac_Slika" Association="Kosarka_Model.FK_Igrac_Slika">
+            <End Role="Slika" EntitySet="Slikas" />
+            <End Role="Igrac" EntitySet="Igracs" />
+          </AssociationSet>
           <AssociationSet Name="FK_Igrac_Tim" Association="Kosarka_Model.FK_Igrac_Tim">
             <End Role="Tim" EntitySet="Tims" />
             <End Role="Igrac" EntitySet="Igracs" />
@@ -292,6 +337,10 @@
           <AssociationSet Name="FK_Utakmica_Kolo" Association="Kosarka_Model.FK_Utakmica_Kolo">
             <End Role="Kolo" EntitySet="Koloes" />
             <End Role="Utakmica" EntitySet="Utakmicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tim_Slika" Association="Kosarka_Model.FK_Tim_Slika">
+            <End Role="Slika" EntitySet="Slikas" />
+            <End Role="Tim" EntitySet="Tims" />
           </AssociationSet>
           <AssociationSet Name="FK_UcinakIgraca_Tim" Association="Kosarka_Model.FK_UcinakIgraca_Tim">
             <End Role="Tim" EntitySet="Tims" />
@@ -331,9 +380,10 @@
           <Property Name="GradID" Type="Int32" Nullable="false" />
           <Property Name="TimID" Type="Int32" Nullable="false" />
           <Property Name="PozicijaID" Type="Int32" Nullable="false" />
-          <Property Name="Slika" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SlikaID" Type="Int32" />
           <NavigationProperty Name="Grad" Relationship="Kosarka_Model.FK_Igrac_Grad" FromRole="Igrac" ToRole="Grad" />
           <NavigationProperty Name="Pozicija" Relationship="Kosarka_Model.FK_Igrac_Pozicija" FromRole="Igrac" ToRole="Pozicija" />
+          <NavigationProperty Name="Slika" Relationship="Kosarka_Model.FK_Igrac_Slika" FromRole="Igrac" ToRole="Slika" />
           <NavigationProperty Name="Tim" Relationship="Kosarka_Model.FK_Igrac_Tim" FromRole="Igrac" ToRole="Tim" />
           <NavigationProperty Name="UcinakIgracas" Relationship="Kosarka_Model.FK_UcinakIgraca_Igrac" FromRole="Igrac" ToRole="UcinakIgraca" />
         </EntityType>
@@ -356,6 +406,15 @@
           <Property Name="SkraceniNaziv" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Igracs" Relationship="Kosarka_Model.FK_Igrac_Pozicija" FromRole="Pozicija" ToRole="Igrac" />
         </EntityType>
+        <EntityType Name="Slika">
+          <Key>
+            <PropertyRef Name="SlikaID" />
+          </Key>
+          <Property Name="SlikaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Slika1" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Igracs" Relationship="Kosarka_Model.FK_Igrac_Slika" FromRole="Slika" ToRole="Igrac" />
+          <NavigationProperty Name="Tims" Relationship="Kosarka_Model.FK_Tim_Slika" FromRole="Slika" ToRole="Tim" />
+        </EntityType>
         <EntityType Name="Tim">
           <Key>
             <PropertyRef Name="TimID" />
@@ -365,9 +424,10 @@
           <Property Name="GradID" Type="Int32" Nullable="false" />
           <Property Name="NazivStadiona" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Trener" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Slika" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SlikaID" Type="Int32" />
           <NavigationProperty Name="Grad" Relationship="Kosarka_Model.FK_Tim_Grad" FromRole="Tim" ToRole="Grad" />
           <NavigationProperty Name="Igracs" Relationship="Kosarka_Model.FK_Igrac_Tim" FromRole="Tim" ToRole="Igrac" />
+          <NavigationProperty Name="Slika" Relationship="Kosarka_Model.FK_Tim_Slika" FromRole="Tim" ToRole="Slika" />
           <NavigationProperty Name="UcinakIgracas" Relationship="Kosarka_Model.FK_UcinakIgraca_Tim" FromRole="Tim" ToRole="UcinakIgraca" />
           <NavigationProperty Name="UtakmicasDomaciTim" Relationship="Kosarka_Model.FK_Utakmica_Tim" FromRole="Tim" ToRole="Utakmica" />
           <NavigationProperty Name="UtakmicasGostujuciTim" Relationship="Kosarka_Model.FK_Utakmica_Tim1" FromRole="Tim" ToRole="Utakmica" />
@@ -409,8 +469,8 @@
           <Property Name="PoeniDomaciTim" Type="Byte" Nullable="false" />
           <Property Name="PoeniGostujuciTim" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Kolo" Relationship="Kosarka_Model.FK_Utakmica_Kolo" FromRole="Utakmica" ToRole="Kolo" />
-          <NavigationProperty Name="TimDomaci" Relationship="Kosarka_Model.FK_Utakmica_Tim" FromRole="Utakmica" ToRole="Tim" />
-          <NavigationProperty Name="TimGostujuci" Relationship="Kosarka_Model.FK_Utakmica_Tim1" FromRole="Utakmica" ToRole="Tim" />
+          <NavigationProperty Name="DomaciTimPokazatelj" Relationship="Kosarka_Model.FK_Utakmica_Tim" FromRole="Utakmica" ToRole="Tim" />
+          <NavigationProperty Name="GostujuciTimPokazatelj" Relationship="Kosarka_Model.FK_Utakmica_Tim1" FromRole="Utakmica" ToRole="Tim" />
           <NavigationProperty Name="UcinakIgracas" Relationship="Kosarka_Model.FK_UcinakIgraca_Utakmica" FromRole="Utakmica" ToRole="UcinakIgraca" />
         </EntityType>
         <Association Name="FK_Igrac_Grad">
@@ -449,6 +509,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Igrac_Slika">
+          <End Type="Kosarka_Model.Slika" Role="Slika" Multiplicity="0..1" />
+          <End Type="Kosarka_Model.Igrac" Role="Igrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slika">
+              <PropertyRef Name="SlikaID" />
+            </Principal>
+            <Dependent Role="Igrac">
+              <PropertyRef Name="SlikaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Igrac_Tim">
           <End Type="Kosarka_Model.Tim" Role="Tim" Multiplicity="1" />
           <End Type="Kosarka_Model.Igrac" Role="Igrac" Multiplicity="*" />
@@ -482,6 +554,18 @@
             </Principal>
             <Dependent Role="Utakmica">
               <PropertyRef Name="KoloID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tim_Slika">
+          <End Type="Kosarka_Model.Slika" Role="Slika" Multiplicity="0..1" />
+          <End Type="Kosarka_Model.Tim" Role="Tim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slika">
+              <PropertyRef Name="SlikaID" />
+            </Principal>
+            <Dependent Role="Tim">
+              <PropertyRef Name="SlikaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -533,7 +617,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -550,7 +634,7 @@
           <EntitySetMapping Name="Igracs">
             <EntityTypeMapping TypeName="Kosarka_Model.Igrac">
               <MappingFragment StoreEntitySet="Igrac">
-                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="SlikaID" ColumnName="SlikaID" />
                 <ScalarProperty Name="PozicijaID" ColumnName="PozicijaID" />
                 <ScalarProperty Name="TimID" ColumnName="TimID" />
                 <ScalarProperty Name="GradID" ColumnName="GradID" />
@@ -581,10 +665,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Slikas">
+            <EntityTypeMapping TypeName="Kosarka_Model.Slika">
+              <MappingFragment StoreEntitySet="Slika">
+                <ScalarProperty Name="Slika1" ColumnName="Slika" />
+                <ScalarProperty Name="SlikaID" ColumnName="SlikaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tims">
             <EntityTypeMapping TypeName="Kosarka_Model.Tim">
               <MappingFragment StoreEntitySet="Tim">
-                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="SlikaID" ColumnName="SlikaID" />
                 <ScalarProperty Name="Trener" ColumnName="Trener" />
                 <ScalarProperty Name="NazivStadiona" ColumnName="NazivStadiona" />
                 <ScalarProperty Name="GradID" ColumnName="GradID" />

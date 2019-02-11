@@ -1,0 +1,42 @@
+﻿@model Kosarka_ITivity_Dejan_Savanovic.Models.TimViewModel
+
+<div class="col">
+    <div class="col-12 pt-2 pl-5 pr-5 pb-3">
+        <div class="col-11 bg-transparent ml-3 mr-3 mt-0" style="height:300px">
+            @Html.Hidden("SlikaID")
+            @Html.Hidden("TimID")
+            <img src='@Url.Action("GetImage", "Pocetna", new { id = Model.SlikaID })' id="Slika" height="200" width="200" style="display:block;margin:auto; opacity:0.5;
+                                " class="center-element" />
+            <label style="border: 1px solid #ccc;
+                                display: inline-block;
+                                padding: 6px 12px;
+                                cursor: pointer;" class="center-element">
+                <input onchange="changeImage(this);" type="file" id="imgTim" style="display: none;" />
+                Upload image
+            </label>
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3">Naziv</label>
+            <input class="col-9" type="text" id="Naziv" value="@Model.Naziv"/>
+        </div>
+        <div class="row mt-4">
+            <label class="col-3">Trener</label>
+            <input class="col-9" type="text" id="Trener" value="@Model.Trener" />
+        </div>
+        <div class="row mt-4">
+            <label class="col-3">Stadion</label>
+            <input class="col-9" type="text" id="NazivStadiona" value="@Model.NazivStadiona"/>
+        </div>
+        <div class="row mt-4">
+            <label class="col-3">Grad</label>
+
+            @Html.DropDownList("GradID", ViewBag.Gradovi as List<SelectListItem>
+    , new { @class = "col-9"})
+
+    
+
+</div>
+
+    </div>
+</div>

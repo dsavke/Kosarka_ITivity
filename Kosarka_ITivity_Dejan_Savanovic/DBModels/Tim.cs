@@ -28,11 +28,12 @@ namespace Kosarka_ITivity_Dejan_Savanovic.DBModels
         public int GradID { get; set; }
         public string NazivStadiona { get; set; }
         public string Trener { get; set; }
-        public byte[] Slika { get; set; }
+        public Nullable<int> SlikaID { get; set; }
     
         public virtual Grad Grad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Igrac> Igracs { get; set; }
+        public virtual Slika Slika { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UcinakIgraca> UcinakIgracas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

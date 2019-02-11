@@ -1,0 +1,148 @@
+﻿@model IEnumerable<Kosarka_ITivity_Dejan_Savanovic.Models.TimViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<button type="button" class="btn btn-primary" id="btnKreirajTim">
+    Create New
+</button>
+
+<table class="table mt-3">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TimID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GradID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NazivStadiona)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trener)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SlikaID)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NazivStadiona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trener)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SlikaID)
+            </td>
+            <td>
+                <a href="#Edit" data-timID="@item.TimID" class="btnEdit">Edit</a> 
+            </td>
+        </tr>
+    }
+
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="mdalKreirajTim" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Kreiraj tim</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col">
+                    <div class="col-12 pt-2 pl-5 pr-5 pb-3">
+                        <div class="col-11 bg-transparent ml-3 mr-3 mt-0" style="height:300px">
+                            <img src="~/Content/Images/basketball.png" id="image" height="200" width="200" style="display:block;margin:auto; opacity:0.5;
+                                " class="center-element" />
+                            <label style="border: 1px solid #ccc;
+                                display: inline-block;
+                                padding: 6px 12px;
+                                cursor: pointer;" class="center-element">
+                                <input onchange="changeImage(this);" type="file" id="imgTim" style="display: none;" />
+                                Upload image
+                            </label>
+                        </div>
+
+                        <div class="row mt-4">
+                            <label class="col-3">Naziv</label>
+                            <input class="col-9" type="text" id="txtNaziv" />
+                        </div>
+                        <div class="row mt-4">
+                            <label class="col-3">Trener</label>
+                            <input class="col-9" type="text" id="txtTrener" />
+                        </div>
+                        <div class="row mt-4">
+                            <label class="col-3">Stadion</label>
+                            <input class="col-9" type="text" id="txtNazivStadiona" />
+                        </div>
+                        <div class="row mt-4">
+                            <label class="col-3">Grad</label>
+
+
+
+                            @Html.DropDownList("txtGradID", new List<SelectListItem>
+                            {
+                            }, new { @class = "col-9"})
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary" id="btnSacuvaj">Sacuvaj</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalEditTim" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Azuriraj tim</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalTijelo">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary" id="btnAzuriraj">Azuriraj</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/Tim/kreiranjeTima.js"></script>
+}

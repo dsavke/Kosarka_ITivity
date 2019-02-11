@@ -1,0 +1,54 @@
+﻿@model Kosarka_ITivity_Dejan_Savanovic.Models.IgracViewModel
+
+<div class="col">
+    <div class="col-12 pt-2 pl-5 pr-5 pb-3">
+        <div class="col-11 bg-transparent ml-3 mr-3 mt-0" style="height:300px">
+            @Html.Hidden("SlikaID")
+            @Html.Hidden("IgracID")
+            <img src='@Url.Action("GetImage", "Pocetna", new { id = Model.SlikaID })' id="Slika" height="200" width="200" style="display:block;margin:auto; opacity:0.5;
+                                " class="center-element" />
+            <label style="border: 1px solid #ccc;
+                                display: inline-block;
+                                padding: 6px 12px;
+                                cursor: pointer;" class="center-element">
+                <input onchange="changeImage(this, Slika);" type="file" id="imgTim" style="display: none;" />
+                Upload image
+            </label>
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3">Ime</label>
+            <input class="col-9" type="text" id="Ime" value="@Model.Ime" />
+        </div>
+        <div class="row mt-4">
+            <label class="col-3">Prezime</label>
+            <input class="col-9" type="text" id="Prezime" value="@Model.Prezime" />
+        </div>
+        <div class="row mt-4">
+            <label class="col-5">Datum rodjenja</label>
+            @Html.EditorFor(model => model.DatumRodjenja, new { htmlAttributes = new { @class = "col-7" } })
+        </div>
+        <div class="row mt-4">
+            <label class="col-3">Drzava</label>
+            <input class="col-9" type="text" id="Drzava" value="@Model.Drzava" />
+        </div>
+        <div class="row mt-4">
+            <label class="col-3">Grad</label>
+            @Html.DropDownList("GradID", ViewBag.Gradovi as List<SelectListItem>
+                , new { @class = "col-9"})
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3">Tim</label>
+            @Html.DropDownList("TimID", ViewBag.Timovi as List<SelectListItem>
+                , new { @class = "col-9"})
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3">Pozicija</label>
+            @Html.DropDownList("PozicijaID", ViewBag.Pozicije as List<SelectListItem>
+                , new { @class = "col-9"})
+        </div>
+
+    </div>
+</div>

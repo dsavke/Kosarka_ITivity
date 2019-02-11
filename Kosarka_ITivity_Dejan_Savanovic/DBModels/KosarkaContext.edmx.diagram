@@ -4,20 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7b1674c8fa0743b1bcbfabe1e9c308d4" Name="Diagram1">
-        <EntityTypeShape EntityType="Kosarka_Model.Grad" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Kosarka_Model.Igrac" Width="1.5" PointX="5.25" PointY="6.375" />
-        <EntityTypeShape EntityType="Kosarka_Model.Kolo" Width="1.5" PointX="3" PointY="12.875" />
-        <EntityTypeShape EntityType="Kosarka_Model.Pozicija" Width="1.5" PointX="3" PointY="5.25" />
-        <EntityTypeShape EntityType="Kosarka_Model.Tim" Width="1.5" PointX="3" PointY="8.375" />
-        <EntityTypeShape EntityType="Kosarka_Model.UcinakIgraca" Width="1.5" PointX="7.5" PointY="8" />
-        <EntityTypeShape EntityType="Kosarka_Model.Utakmica" Width="1.5" PointX="5.25" PointY="11.375" />
+      <Diagram DiagramId="7b1674c8fa0743b1bcbfabe1e9c308d4" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="Kosarka_Model.Grad" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="Kosarka_Model.Igrac" Width="1.5" PointX="5.25" PointY="5.5" />
+        <EntityTypeShape EntityType="Kosarka_Model.Kolo" Width="1.5" PointX="3" PointY="14" />
+        <EntityTypeShape EntityType="Kosarka_Model.Pozicija" Width="1.5" PointX="3" PointY="2.125" />
+        <EntityTypeShape EntityType="Kosarka_Model.Slika" Width="1.5" PointX="3" PointY="10.75" />
+        <EntityTypeShape EntityType="Kosarka_Model.Tim" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="Kosarka_Model.UcinakIgraca" Width="1.5" PointX="7.5" PointY="4.875" />
+        <EntityTypeShape EntityType="Kosarka_Model.Utakmica" Width="1.625" PointX="5.25" PointY="0.75" />
         <AssociationConnector Association="Kosarka_Model.FK_Igrac_Grad" />
         <AssociationConnector Association="Kosarka_Model.FK_Tim_Grad" />
         <AssociationConnector Association="Kosarka_Model.FK_Igrac_Pozicija" />
+        <AssociationConnector Association="Kosarka_Model.FK_Igrac_Slika" />
         <AssociationConnector Association="Kosarka_Model.FK_Igrac_Tim" />
         <AssociationConnector Association="Kosarka_Model.FK_UcinakIgraca_Igrac" />
         <AssociationConnector Association="Kosarka_Model.FK_Utakmica_Kolo" />
+        <AssociationConnector Association="Kosarka_Model.FK_Tim_Slika" />
         <AssociationConnector Association="Kosarka_Model.FK_UcinakIgraca_Tim" />
         <AssociationConnector Association="Kosarka_Model.FK_Utakmica_Tim" />
         <AssociationConnector Association="Kosarka_Model.FK_Utakmica_Tim1" />
