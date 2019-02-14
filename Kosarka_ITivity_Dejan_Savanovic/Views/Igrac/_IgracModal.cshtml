@@ -18,36 +18,36 @@
 
         <div class="row mt-4">
             <label class="col-3">Ime</label>
-            <input class="col-9" type="text" id="Ime" value="@Model.Ime" />
+            <input class="form-control col-9" type="text" id="Ime" value="@Model.Ime" />
         </div>
         <div class="row mt-4">
             <label class="col-3">Prezime</label>
-            <input class="col-9" type="text" id="Prezime" value="@Model.Prezime" />
+            <input class="form-control col-9" type="text" id="Prezime" value="@Model.Prezime" />
         </div>
         <div class="row mt-4">
             <label class="col-5">Datum rodjenja</label>
-            @Html.EditorFor(model => model.DatumRodjenja, new { htmlAttributes = new { @class = "col-7" } })
+            @Html.EditorFor(model => model.DatumRodjenja, new { htmlAttributes = new { @class = "form-control col-7" } })
         </div>
         <div class="row mt-4">
             <label class="col-3">Drzava</label>
-            <input class="col-9" type="text" id="Drzava" value="@Model.Drzava" />
+            <input class="form-control col-9" type="text" id="Drzava" value="@Model.Drzava" />
         </div>
         <div class="row mt-4">
             <label class="col-3">Grad</label>
             @Html.DropDownList("GradID", ViewBag.Gradovi as List<SelectListItem>
-                , new { @class = "col-9"})
+                , new { @class = "form-control col-9" })
         </div>
 
         <div class="row mt-4">
             <label class="col-3">Tim</label>
             @Html.DropDownList("TimID", ViewBag.Timovi as List<SelectListItem>
-                , new { @class = "col-9"})
+                , new { @class = "form-control col-9" })
         </div>
 
         <div class="row mt-4">
             <label class="col-3">Pozicija</label>
             @Html.DropDownList("PozicijaID", ViewBag.Pozicije as List<SelectListItem>
-                , new { @class = "col-9"})
+                , new { @class = "form-control col-9" })
         </div>
 
     </div>

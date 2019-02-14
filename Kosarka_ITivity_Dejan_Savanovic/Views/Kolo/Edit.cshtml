@@ -1,0 +1,60 @@
+﻿@model Kosarka_ITivity_Dejan_Savanovic.Models.KoloViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-4 bg-dark">
+
+            <div class="col mt-3 ml-3">
+
+                <input type="hidden" id="koloID" value="@Model.KoloID" />
+
+                <div class="row">
+                    <h5>Broj kola:&nbsp;&nbsp;&nbsp;@Model.BrojKola</h5>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <h5>Datum pocetka kola:&nbsp;&nbsp;&nbsp;@Model.DatumPocetkaKola.ToShortDateString()</h5>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <h5>Datum kraja kola:&nbsp;&nbsp;&nbsp;@Model.DatumKrajKola.ToShortDateString()</h5>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div>
+                <div class="bg-dark m-0" id="utakmice">
+
+                </div>
+
+                <div id="formaDodaj" class="">
+
+                </div>
+            </div>
+
+            <div class="mt-0" id="divHide">
+                <button id="btnDodaj" class="btn btn-primary col-12 float-right">DODAJ UTAKMICU</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="~/Scripts/Kolo/utakmiceKontroler.js"></script>
+}

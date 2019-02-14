@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Kosarka_ITivity_Dejan_Savanovic.Models.KoloViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
+<div class="col mt-5">
+    <div class="row">
+        <div class="col-5 bg-dark pl-3 pr-3 pb-4">
+            @using (Html.BeginForm("Edit", "Kolo", FormMethod.Post))
+            {
+                <div>
+                    <div class="col p-0">
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary mt-3 col-12" id="btnKreirajKolo">
+                                    Kreiraj kolo
+                                </button>
+                            </div>
+
+                            <div class="col-6">
+                                <input type="submit" class="btn btn-primary mt-3 col-12" value="Izmijeni kolo" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 row">
+                        <div class="col">
+                            @Html.DropDownList("KoloID", Model.Select(m => new SelectListItem()
+                            {
+                            Text = "KOLO: " + m.BrojKola,
+                                    Value = "" + m.KoloID
+                                })
+                                            , new { @class = "form-control col-12" })
+
+                            <div class="mt-5">
+                                <label>Datum utakmice</label>
+                                <input type="text" id="datum" class="col-12" />
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-7 bg-dark">
+
+            <div class="" id="utakmice" style="height:500px">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalKoloCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Kreiraj kolo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalTijeloCreate">
+                    <div class="col-12 pt-2 pl-5 pr-5 pb-3 mb-4">
+                        <div class="row mt-4">
+                            <label class="col-5">Broj kola</label>
+                            <input readonly class="form-control col-7 bg-white" type="text" id="BrojKola" />
+                        </div>
+                        <div class="row mt-4">
+                            <label class="col-5">Pocetak kola</label>
+                            <input type="text" id="pocetakKola" class="col-7" />
+                        </div>
+                        <div class="row mt-4">
+                            <label class="col-5">Kraj kola</label>
+                            <input type="text" id="krajKola" class="col-7" />
+                        </div>
+                    </div>
+                </div>
+                    <div class="col">
+                        <div class="row">
+                            <button type="button" class="btn btn-secondary col-6" data-dismiss="modal">Zatvori</button>
+                            <button type="button" class="btn btn-primary col-6" id="btnSacuvaj">Sacuvaj</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    @section scripts{
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="~/Scripts/Kolo/koloKontroler.js"></script>
+    }

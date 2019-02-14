@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Kosarka_ITivity_Dejan_Savanovic.Models.UtakmicaViewModel>
+
+@{ 
+    Layout = null;
+}
+
+<div class="">
+
+    @{
+        foreach (var item in Model)
+        {
+            @Html.Partial("_UtakmicaCreateEdit", item as Kosarka_ITivity_Dejan_Savanovic.Models.UtakmicaViewModel)
+        }
+    }
+
+</div>

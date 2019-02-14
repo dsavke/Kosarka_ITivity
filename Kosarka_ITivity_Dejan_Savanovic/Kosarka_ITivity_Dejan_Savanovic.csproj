@@ -138,6 +138,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IgracController.cs" />
+    <Compile Include="Controllers\KoloController.cs" />
     <Compile Include="Controllers\PocetnaController.cs" />
     <Compile Include="Controllers\TimController.cs" />
     <Compile Include="DBModels\Grad.cs">
@@ -183,8 +184,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IgracViewModel.cs" />
+    <Compile Include="Models\KoloViewModel.cs" />
     <Compile Include="Models\RangTimovaViewModel.cs" />
     <Compile Include="Models\TimViewModel.cs" />
+    <Compile Include="Models\UtakmicaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +251,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Kolo\koloKontroler.js" />
+    <Content Include="Scripts\Kolo\utakmiceKontroler.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -258,6 +263,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\Utakmica\utakmicaIzgled.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -286,6 +292,12 @@
     <Content Include="Views\Tim\_ModalTimTijelo.cshtml" />
     <Content Include="Views\Igrac\Index.cshtml" />
     <Content Include="Views\Igrac\_IgracModal.cshtml" />
+    <Content Include="Views\Kolo\Index.cshtml" />
+    <Content Include="Views\Kolo\Edit.cshtml" />
+    <Content Include="Views\Kolo\_UtakmicaCreateEdit.cshtml" />
+    <Content Include="Views\Kolo\GetUtakmice.cshtml" />
+    <Content Include="Views\Kolo\_UtakmicaCreateEditForm.cshtml" />
+    <Content Include="Views\Kolo\_UtakmicaEditRezultat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

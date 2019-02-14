@@ -89,15 +89,15 @@
 
                         <div class="row mt-4">
                             <label class="col-3">Naziv</label>
-                            <input class="col-9" type="text" id="txtNaziv" />
+                            <input class="form-control col-9" type="text" id="txtNaziv" />
                         </div>
                         <div class="row mt-4">
                             <label class="col-3">Trener</label>
-                            <input class="col-9" type="text" id="txtTrener" />
+                            <input class="form-control col-9" type="text" id="txtTrener" />
                         </div>
                         <div class="row mt-4">
                             <label class="col-3">Stadion</label>
-                            <input class="col-9" type="text" id="txtNazivStadiona" />
+                            <input class="form-control col-9" type="text" id="txtNazivStadiona" />
                         </div>
                         <div class="row mt-4">
                             <label class="col-3">Grad</label>
@@ -105,18 +105,26 @@
 
 
                             @Html.DropDownList("txtGradID", new List<SelectListItem>
-                            {
-                            }, new { @class = "col-9"})
+                       {
+                       }, new { @class = "form-control col-9" })
 
                         </div>
 
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
+            @*<div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
                 <button type="button" class="btn btn-primary" id="btnSacuvaj">Sacuvaj</button>
+            </div>*@
+
+            <div class="col">
+                <div class="row">
+                    <button type="button" class="btn btn-secondary col-6" data-dismiss="modal">Zatvori</button>
+                    <button type="button" class="btn btn-primary col-6" id="btnSacuvaj">Sacuvaj</button>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -134,10 +142,18 @@
             </div>
             <div class="modal-body" id="modalTijelo">
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
-                <button type="button" class="btn btn-primary" id="btnAzuriraj">Azuriraj</button>
+            @*<div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+            <button type="button" class="btn btn-primary" id="btnAzuriraj">Azuriraj</button>
+        </div>*@
+
+            <div class="col">
+                <div class="row">
+                    <button type="button" class="btn btn-secondary col-6" data-dismiss="modal">Zatvori</button>
+                    <button type="button" class="btn btn-primary col-6" id="btnAzuriraj">Azuriraj</button>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
