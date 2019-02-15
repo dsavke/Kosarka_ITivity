@@ -16,8 +16,12 @@
 
     });
 
+    console.log($("#pocetniDatum").val());
+
     const fpDatum = flatpickr("#DatumOdigravanja", {
-        defaultDate: new Date()
+        defaultDate: $("#pocetniDatum").val(),
+        minDate: $("#pocetniDatum").val(),
+        maxDate: $("#krajniDatum").val()
     });
     
 });

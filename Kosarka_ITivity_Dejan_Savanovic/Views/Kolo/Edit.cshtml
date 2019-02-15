@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 <div class="container mt-5">
 
@@ -16,6 +17,8 @@
             <div class="col mt-3 ml-3">
 
                 <input type="hidden" id="koloID" value="@Model.KoloID" />
+                <input type="hidden" id="pocetniDatum" value="@Model.DatumPocetkaKola.ToString("yyyy-MM-dd")" />
+                <input type="hidden" id="krajniDatum" value="@Model.DatumKrajKola.ToString("yyyy-MM-dd")" />
 
                 <div class="row">
                     <h5>Broj kola:&nbsp;&nbsp;&nbsp;@Model.BrojKola</h5>
@@ -54,6 +57,30 @@
     </div>
 
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Brisanje utakmice</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Da li zelis izbrisati utakmicu?</p>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <button type="button" class="btn btn-secondary col-6" data-dismiss="modal">Zatvori</button>
+                    <button type="button" class="btn btn-primary col-6" id="btnObrisi">Obrisi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section scripts{
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="~/Scripts/Kolo/utakmiceKontroler.js"></script>

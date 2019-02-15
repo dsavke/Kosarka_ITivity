@@ -30,34 +30,40 @@
         <th>
             @Html.DisplayNameFor(model => model.SlikaID)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojGledalaca)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Naziv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GradID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NazivStadiona)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Trener)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SlikaID)
-            </td>
-            <td>
-                <a href="#Edit" data-timID="@item.TimID" class="btnEdit">Edit</a> 
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GradID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivStadiona)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trener)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SlikaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrojGledalaca)
+        </td>
+        <td>
+            <a href="#Edit" data-timID="@item.TimID" class="btnEdit">Edit</a>
+        </td>
+    </tr>
     }
 
 </table>
@@ -98,6 +104,10 @@
                         <div class="row mt-4">
                             <label class="col-3">Stadion</label>
                             <input class="form-control col-9" type="text" id="txtNazivStadiona" />
+                        </div>
+                        <div class="row mt-4">
+                            <label class="col-3">Kapacitet stadiona</label>
+                            <input class="form-control col-9" type="text" id="txtBrojGledalaca" />
                         </div>
                         <div class="row mt-4">
                             <label class="col-3">Grad</label>
@@ -142,11 +152,6 @@
             </div>
             <div class="modal-body" id="modalTijelo">
             </div>
-            @*<div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
-            <button type="button" class="btn btn-primary" id="btnAzuriraj">Azuriraj</button>
-        </div>*@
-
             <div class="col">
                 <div class="row">
                     <button type="button" class="btn btn-secondary col-6" data-dismiss="modal">Zatvori</button>

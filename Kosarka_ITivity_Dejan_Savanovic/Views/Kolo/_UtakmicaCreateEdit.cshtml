@@ -1,11 +1,34 @@
-﻿@model Kosarka_ITivity_Dejan_Savanovic.Models.UtakmicaViewModel
+﻿@model Kosarka_ITivity_Dejan_Savanovic.Models.UtakmicaPrikazViewModel
 
-<div>
-    @Html.DisplayFor(model => model.DatumOdigravanja)
-    @Html.DisplayFor(model => model.DomaciTim)
-    @Html.DisplayFor(model => model.PoeniDomaciTim)
-    @Html.DisplayFor(model => model.PoeniGostujuciTim)
-    @Html.DisplayFor(model => model.GostujuciTim)
-    @Model.KoloID
+<div class="container">
+    
+    <div class="row pt-3">
+        <div class="col-12">
+            <i data-utakmicaID="@Model.UtakmicaID" data-koloID="@Model.KoloID" class="fas fa-trash fa-lg float-right utakmicaDelete"></i>
+            <i data-utakmicaID="@Model.UtakmicaID" data-koloID="@Model.KoloID" class="fas fa-edit fa-lg float-right mr-2 utakmicaEdit"></i>
+        </div>
+    </div>
+    <div class="row mt-0">
+        <div class="col-4">
+            <img src='@Url.Action("GetImage", "Pocetna", new { id = Model.DomaciTimSlikaID })' height="100" class="center-element"/>
+        </div>
+        <div class="col-4">
+            <div style="height:110px">
+                <div class="center-element">
+                    <p class="h5 center-element pb-5">@Model.DatumOdigravanja.ToString("dd.MM.yyyy")</p>
+                    <p class="h4 pt-5"><span style="color:#DF691A">@Model.PoeniDomaciTim</span>&nbsp;&nbsp;:&nbsp;&nbsp;<span style="color:#DF691A">@Model.PoeniGostujuciTim</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <img src='@Url.Action("GetImage", "Pocetna", new { id = Model.GostujuciTimSlikaID })' height="100" class="center-element"/>
+        </div>
+    </div>
+    <div class="row">
+        <p class="col-4 text-center" style="color:#DF691A">@Model.DomaciTimNaziv</p>
+        <p class="col-4"></p>
+        <p class="col-4 text-center" style="color:#DF691A">@Model.GostujuciTimNaziv</p>
+    </div>
+
 </div>
 

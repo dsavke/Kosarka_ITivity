@@ -14,5 +14,6 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Models
         public string Trener { get; set; }
         public int? SlikaID { get; set; }
         public byte[] Slika { get; set; }
+        public int BrojGledalaca { get; set; }
     }
 }

@@ -187,6 +187,7 @@
     <Compile Include="Models\KoloViewModel.cs" />
     <Compile Include="Models\RangTimovaViewModel.cs" />
     <Compile Include="Models\TimViewModel.cs" />
+    <Compile Include="Models\UtakmicaPrikazViewModel.cs" />
     <Compile Include="Models\UtakmicaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -298,6 +299,7 @@
     <Content Include="Views\Kolo\GetUtakmice.cshtml" />
     <Content Include="Views\Kolo\_UtakmicaCreateEditForm.cshtml" />
     <Content Include="Views\Kolo\_UtakmicaEditRezultat.cshtml" />
+    <Content Include="Views\Kolo\_RasporedUtakmica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

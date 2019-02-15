@@ -6,28 +6,31 @@
 
 <div class="mt-0 bg-dark">
 
-    @using (Html.BeginForm("CreateUtakmica", "Kolo", FormMethod.Post))
+    @using (Html.BeginForm("EditUtakmica", "Kolo", FormMethod.Post))
     {
 
         @Html.HiddenFor(model => model.KoloID)
+        @Html.HiddenFor(model => model.UtakmicaID)
+        @Html.HiddenFor(model => model.DomaciTim)
+        @Html.HiddenFor(model => model.GostujuciTim)
 
         <div class="col pt-2">
 
             <div class="row">
 
                 <div class="col-4">
-                    <img src='@Url.Action("GetImage", "Pocetna", new { id = Model.DomaciTimSlikaID })' id="SlikaDomaciTim" height="170" style="display:block;margin:auto;
-            " class="col-12" />
+                    <img src='@Url.Action("GetImage", "Pocetna", new { id = Model.DomaciTimSlikaID })' id="SlikaDomaciTim" height="100" style="display:block;margin:auto;
+            " width="100" />
 
                 </div>
 
                 <div class="col-4">
-                    <p id="lblNaziv" class="text-center mt-5">Izaberi tim vs Izaberi tim</p>
+                    <p id="lblNaziv" class="text-center mt-5">@Model.DomaciTimNaziv vs @Model.GostujuciTimNaziv</p>
                 </div>
 
                 <div class="col-4">
-                    <img src='@Url.Action("GetImage", "Pocetna", new { id = Model.GostujuciTimSlikaID })' id="SlikaGostujuciTim" height="170" style="display:block;margin:auto;
-            " class="col-12" />
+                    <img src='@Url.Action("GetImage", "Pocetna", new { id = Model.GostujuciTimSlikaID })' id="SlikaGostujuciTim" height="100" style="display:block;margin:auto;
+            " width="100"/>
 
 
                 </div>
@@ -36,48 +39,13 @@
 
         </div>
 
-        <div class="col-12 mt-5 mb-3">
-
-            <div class="row">
-
-                <div class="col-6">
-
-                    <select id="DomaciTim" class="form-control col-12" name="DomaciTim">
-                        @{
-                            foreach (var item in ViewBag.Timovi as List<Kosarka_ITivity_Dejan_Savanovic.Models.TimViewModel>)
-                            {
-                                <option id="@item.TimID" data-url="@Url.Action("GetImage", "Pocetna", new { id = item.SlikaID })"
-                                        data-stadion="@item.NazivStadiona" data-brojGledalaca="20000" value="@item.TimID">
-                                    @item.Naziv
-                                </option>
-                            }
-                        }
-                    </select>
-
-                </div>
-                <div class="col-6">
-
-                    <select id="GostujuciTim" class="form-control col-12" name="GostujuciTim">
-                        @{
-                            foreach (var item in ViewBag.Timovi as List<Kosarka_ITivity_Dejan_Savanovic.Models.TimViewModel>)
-                            {
-                                <option id="@item.TimID" data-url="@Url.Action("GetImage", "Pocetna", new { id = item.SlikaID })" value="@item.TimID">@item.Naziv</option>
-                            }
-                        }
-                    </select>
-
-                </div>
-
-            </div>
-
-        </div>
         <div class="col-12 mt-4">
             <div class="row">
                 <div class="col-4 pl-0">
                     <label class="col-12 h6">Stadion</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" readonly id="txtStadion" name="NazivStadiona" class="form-control col-12 bg-white" value="" />
+                    <input type="text" readonly id="txtStadion" name="NazivStadiona" class="form-control col-12 bg-white" value="@Model.Stadion" />
                 </div>
             </div>
         </div>
@@ -90,7 +58,7 @@
                 <div class="col-8">
 
                     <div class="input-group">
-                        <input type="text" class="form-control col-6" name="BrojGledalaca" id="BrojGledalaca" value="">
+                        <input type="text" class="form-control col-6" name="BrojGledalaca" id="BrojGledalaca" value="@Model.BrojGledalaca">
                         <div class="input-group-append">
                             <span class="input-group-text" style="color:white">/</span>
                         </div>
@@ -108,7 +76,7 @@
                     <label class="col-12 h6">Datum odigravanja</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" id="DatumOdigravanja" name="DatumOdigravanja" class="form-control col-12 bg-white" value="" />
+                    <input type="text" id="DatumOdigravanja" name="DatumOdigravanja" class="form-control col-12 bg-white" value="@Model.DatumOdigravanja.ToString("yyyy-MM-dd")" />
                 </div>
             </div>
         </div>
@@ -119,7 +87,7 @@
                     <label class="col-12 h6">Poeni domaci tim</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" id="PoeniDomaciTim" name="PoeniDomaciTim" class="form-control col-12" value="" />
+                    <input type="text" id="PoeniDomaciTim" name="PoeniDomaciTim" class="form-control col-12" value="@Model.PoeniDomaciTim" />
                 </div>
             </div>
         </div>
@@ -130,7 +98,7 @@
                     <label class="col-12 h6">Poeni gostujuci tim</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" id="PoeniGostujuciTim" name="PoeniGostujuciTim" class="form-control col-12" value="" />
+                    <input type="text" id="PoeniGostujuciTim" name="PoeniGostujuciTim" class="form-control col-12" value="@Model.PoeniGostujuciTim" />
                 </div>
             </div>
         </div>
@@ -141,7 +109,7 @@
                     <label class="col-12 h6">Poeni prva cetvrtina</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" id="PoeniPrvaCetvrtina" name="PoeniPrvaCetvrtina" class="form-control col-12" value="" />
+                    <input type="text" id="PoeniPrvaCetvrtina" name="PoeniPrvaCetvrtina" class="form-control col-12" value="@Model.PoeniPrvaCetvrtina" />
                 </div>
             </div>
         </div>
@@ -152,7 +120,7 @@
                     <label class="col-12 h6">Poeni druga cetvrtina</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" id="PoeniDrugaCetvrtina" name="PoeniDrugaCetvrtina" class="form-control col-12" value="" />
+                    <input type="text" id="PoeniDrugaCetvrtina" name="PoeniDrugaCetvrtina" class="form-control col-12" value="@Model.PoeniDrugaCetvrtina" />
                 </div>
             </div>
         </div>
@@ -163,7 +131,7 @@
                     <label class="col-12 h6">Poeni treca cetvrtina</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" id="PoeniTrecaCetvrtina" name="PoeniTrecaCetvrtina" class="form-control col-12" value="" />
+                    <input type="text" id="PoeniTrecaCetvrtina" name="PoeniTrecaCetvrtina" class="form-control col-12" value="@Model.PoeniTrecaCetvrtina" />
                 </div>
             </div>
         </div>
@@ -174,7 +142,7 @@
                     <label class="col-12 h6">Poeni cetvrta cetvrtina</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" id="PoeniCetvrtaCetvrtina" name="PoeniCetvrtaCetvrtina" class="form-control col-12" value="" />
+                    <input type="text" id="PoeniCetvrtaCetvrtina" name="PoeniCetvrtaCetvrtina" class="form-control col-12" value="@Model.PoeniCetvrtaCetvrtina" />
                 </div>
             </div>
         </div>
@@ -185,15 +153,15 @@
                     <label class="col-12 h6">Poeni produzetak</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" id="PoeniProduzetak" name="PoeniProduzetak" class="form-control col-12" value="" />
+                    <input type="text" id="PoeniProduzetak" name="PoeniProduzetak" class="form-control col-12" value="@Model.PoeniProduzetak" />
                 </div>
             </div>
         </div>
 
-        <div class="col mt-5">
+        <div class="col mt-4">
             <div class="row">
                 <button type="button" class="btn btn-secondary col-6" id="btnZatvori">Zatvori</button>
-                <input type="submit" class="btn btn-primary col-6" id="btnDodajUtakmicu" value="Dodaj" />
+                <input type="submit" class="btn btn-primary col-6" id="btnDodajUtakmicu" value="Sacuvaj" />
             </div>
         </div>
 

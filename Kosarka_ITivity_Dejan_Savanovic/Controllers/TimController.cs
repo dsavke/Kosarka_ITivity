@@ -23,7 +23,8 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     GradID = t.GradID,
                     NazivStadiona = t.NazivStadiona,
                     Trener = t.Trener,
-                    SlikaID = t.SlikaID
+                    SlikaID = t.SlikaID,
+                    BrojGledalaca = t.BrojGledalaca
                 }).ToList();
                 return View(timovi);
             }
@@ -45,7 +46,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(string slika, string naziv, string trener, string stadionNaziv, int gradID)
+        public ActionResult Create(string slika, string naziv, string trener, string stadionNaziv, int gradID, int brojGledalaca)
         {
 
             try {
@@ -60,7 +61,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     context.Slikas.Add(s);
                     context.SaveChanges();
 
-                    Tim tim = new Tim() { Naziv = naziv, Trener = trener, NazivStadiona = stadionNaziv, GradID = gradID, SlikaID = s.SlikaID};
+                    Tim tim = new Tim() { Naziv = naziv, Trener = trener, NazivStadiona = stadionNaziv, GradID = gradID, SlikaID = s.SlikaID, BrojGledalaca = brojGledalaca};
 
                     context.Tims.Add(tim);
                     context.SaveChanges();
@@ -92,7 +93,8 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     GradID = tim.GradID,
                     NazivStadiona = tim.NazivStadiona,
                     TimID = tim.TimID,
-                    Trener = tim.Trener
+                    Trener = tim.Trener,
+                    BrojGledalaca = tim.BrojGledalaca
                 };
 
                 ViewBag.Gradovi = context.Grads.Select(g => new SelectListItem()
@@ -107,7 +109,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int slikaID, int timID, string slika, string naziv, string trener, string stadionNaziv, int gradID)
+        public ActionResult Edit(int slikaID, int timID, string slika, string naziv, string trener, string stadionNaziv, int gradID, int brojGledalaca)
         {
 
             try
@@ -137,6 +139,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     tim.Trener = trener;
                     tim.NazivStadiona = stadionNaziv;
                     tim.GradID = gradID;
+                    tim.BrojGledalaca = brojGledalaca;
 
                     context.SaveChanges();
 

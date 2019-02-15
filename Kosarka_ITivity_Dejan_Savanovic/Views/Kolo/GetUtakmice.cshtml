@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Kosarka_ITivity_Dejan_Savanovic.Models.UtakmicaViewModel>
+﻿@model IEnumerable<Kosarka_ITivity_Dejan_Savanovic.Models.UtakmicaPrikazViewModel>
 
 @{ 
     Layout = null;
@@ -9,7 +9,15 @@
     @{
         foreach (var item in Model)
         {
-            @Html.Partial("_UtakmicaCreateEdit", item as Kosarka_ITivity_Dejan_Savanovic.Models.UtakmicaViewModel)
+            @Html.Partial("_UtakmicaCreateEdit", item as Kosarka_ITivity_Dejan_Savanovic.Models.UtakmicaPrikazViewModel)
+            <hr style="display: block;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    margin: 0;
+    border-color:#DF691A;" class="col-12" />
         }
     }
 

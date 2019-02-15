@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Kosarka_ITivity_Dejan_Savanovic.Models.UtakmicaViewModel>
+
+<div>
+
+    @{
+    
+    <table class="table table-hover">
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+            <tr class="detaljiUtakmice">
+                <th scope="row" style="color:#DF691A" class="pt-4">@item.DatumOdigravanja.ToShortDateString()</th>
+                <td>@item.DomaciTimNaziv<br /> @item.GostujuciTimNaziv</td>
+                <td style="color:#DF691A">@item.PoeniDomaciTim <br />@item.PoeniGostujuciTim</td>
+                <td class="pt-4">@item.PoeniPrvaCetvrtina</td>
+                <td class="pt-4">@item.PoeniDrugaCetvrtina</td>
+                <td class="pt-4">@item.PoeniTrecaCetvrtina</td>
+                <td class="pt-4">@item.PoeniCetvrtaCetvrtina</td>
+                <td class="pt-4">@item.PoeniProduzetak</td>
+            </tr>
+
+            }
+
+        </tbody>
+    </table>
+
+   }
+
+</div>

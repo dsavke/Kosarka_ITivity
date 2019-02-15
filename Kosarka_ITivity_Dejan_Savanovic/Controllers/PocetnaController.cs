@@ -16,7 +16,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
             using (var context = new KosarkaContext())
             {
 
-                var tabela = context.Tims.Select(t => new RangTimovaViewModel()
+                var tabela = context.Tims.ToList().Select(t => new RangTimovaViewModel()
                 {
                     SlikaID = (t.SlikaID == null?1:t.SlikaID),
 
@@ -32,10 +32,10 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     .ToList().Count + t.UtakmicasGostujuciTim
                     .Where(u => u.PoeniGostujuciTim < u.PoeniDomaciTim).ToList().Count,
 
-                    KosRazlika = 0 + (t.UtakmicasDomaciTim.Sum(u => u.PoeniDomaciTim) +
-                    t.UtakmicasGostujuciTim.Sum(u => u.PoeniGostujuciTim)) - 
-                    (t.UtakmicasDomaciTim.Sum(u => u.PoeniGostujuciTim) +
-                    t.UtakmicasGostujuciTim.Sum(u => u.PoeniDomaciTim)),
+                    KosRazlika = (kosRazlika(t.UtakmicasDomaciTim.ToList(), 1) +
+                    kosRazlika(t.UtakmicasGostujuciTim.ToList(), 2))  -
+                    (kosRazlika(t.UtakmicasDomaciTim.ToList(), 2) +
+                    kosRazlika(t.UtakmicasGostujuciTim.ToList(), 1)),
 
                     Bodovi = 0 + (t.UtakmicasDomaciTim.
                     Where(u => u.PoeniDomaciTim > u.PoeniGostujuciTim)
@@ -46,7 +46,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     .ToList().Count * 1) + (t.UtakmicasGostujuciTim
                     .Where(u => u.PoeniGostujuciTim < u.PoeniDomaciTim).ToList().Count * 1))
 
-                }).ToList();
+                }).OrderByDescending(t => t.Bodovi).ThenByDescending(t => t.KosRazlika).ToList();
 
                 return View(tabela);
             }
@@ -59,6 +59,13 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                 var image = context.Slikas.Find(id).Slika1;
                 return File(image, "image/jpg");
             }
+        }
+
+        private int kosRazlika(List<Utakmica> utakmice, int tip)
+        {
+            if (utakmice.Count == 0) return 0;
+            else if (tip == 1) return utakmice.Sum(u => u.PoeniDomaciTim);
+            else return utakmice.Sum(u => u.PoeniGostujuciTim);
         }
 
     }

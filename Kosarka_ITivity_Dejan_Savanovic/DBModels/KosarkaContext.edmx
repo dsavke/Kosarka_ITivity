@@ -60,6 +60,7 @@
           <Property Name="NazivStadiona" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Trener" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="SlikaID" Type="int" />
+          <Property Name="BrojGledalaca" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UcinakIgraca">
           <Key>
@@ -94,6 +95,12 @@
           <Property Name="GostujuciTim" Type="int" Nullable="false" />
           <Property Name="PoeniDomaciTim" Type="tinyint" Nullable="false" />
           <Property Name="PoeniGostujuciTim" Type="tinyint" Nullable="false" />
+          <Property Name="PoeniPrvaCetvrtina" Type="tinyint" Nullable="false" />
+          <Property Name="PoeniDrugaCetvrtina" Type="tinyint" Nullable="false" />
+          <Property Name="PoneiTrecaCetvrtina" Type="tinyint" Nullable="false" />
+          <Property Name="PoeniCetvrtaCetvrtina" Type="tinyint" Nullable="false" />
+          <Property Name="PoeniProduzetak" Type="tinyint" Nullable="false" />
+          <Property Name="BrojGledalaca" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Igrac_Grad">
           <End Role="Grad" Type="Self.Grad" Multiplicity="1" />
@@ -425,6 +432,7 @@
           <Property Name="NazivStadiona" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Trener" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SlikaID" Type="Int32" />
+          <Property Name="BrojGledalaca" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Grad" Relationship="Kosarka_Model.FK_Tim_Grad" FromRole="Tim" ToRole="Grad" />
           <NavigationProperty Name="Igracs" Relationship="Kosarka_Model.FK_Igrac_Tim" FromRole="Tim" ToRole="Igrac" />
           <NavigationProperty Name="Slika" Relationship="Kosarka_Model.FK_Tim_Slika" FromRole="Tim" ToRole="Slika" />
@@ -468,6 +476,12 @@
           <Property Name="GostujuciTim" Type="Int32" Nullable="false" />
           <Property Name="PoeniDomaciTim" Type="Byte" Nullable="false" />
           <Property Name="PoeniGostujuciTim" Type="Byte" Nullable="false" />
+          <Property Name="PoeniPrvaCetvrtina" Type="Byte" Nullable="false" />
+          <Property Name="PoeniDrugaCetvrtina" Type="Byte" Nullable="false" />
+          <Property Name="PoneiTrecaCetvrtina" Type="Byte" Nullable="false" />
+          <Property Name="PoeniCetvrtaCetvrtina" Type="Byte" Nullable="false" />
+          <Property Name="PoeniProduzetak" Type="Byte" Nullable="false" />
+          <Property Name="BrojGledalaca" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Kolo" Relationship="Kosarka_Model.FK_Utakmica_Kolo" FromRole="Utakmica" ToRole="Kolo" />
           <NavigationProperty Name="DomaciTimPokazatelj" Relationship="Kosarka_Model.FK_Utakmica_Tim" FromRole="Utakmica" ToRole="Tim" />
           <NavigationProperty Name="GostujuciTimPokazatelj" Relationship="Kosarka_Model.FK_Utakmica_Tim1" FromRole="Utakmica" ToRole="Tim" />
@@ -676,6 +690,7 @@
           <EntitySetMapping Name="Tims">
             <EntityTypeMapping TypeName="Kosarka_Model.Tim">
               <MappingFragment StoreEntitySet="Tim">
+                <ScalarProperty Name="BrojGledalaca" ColumnName="BrojGledalaca" />
                 <ScalarProperty Name="SlikaID" ColumnName="SlikaID" />
                 <ScalarProperty Name="Trener" ColumnName="Trener" />
                 <ScalarProperty Name="NazivStadiona" ColumnName="NazivStadiona" />
@@ -711,6 +726,12 @@
           <EntitySetMapping Name="Utakmicas">
             <EntityTypeMapping TypeName="Kosarka_Model.Utakmica">
               <MappingFragment StoreEntitySet="Utakmica">
+                <ScalarProperty Name="BrojGledalaca" ColumnName="BrojGledalaca" />
+                <ScalarProperty Name="PoeniProduzetak" ColumnName="PoeniProduzetak" />
+                <ScalarProperty Name="PoeniCetvrtaCetvrtina" ColumnName="PoeniCetvrtaCetvrtina" />
+                <ScalarProperty Name="PoneiTrecaCetvrtina" ColumnName="PoneiTrecaCetvrtina" />
+                <ScalarProperty Name="PoeniDrugaCetvrtina" ColumnName="PoeniDrugaCetvrtina" />
+                <ScalarProperty Name="PoeniPrvaCetvrtina" ColumnName="PoeniPrvaCetvrtina" />
                 <ScalarProperty Name="PoeniGostujuciTim" ColumnName="PoeniGostujuciTim" />
                 <ScalarProperty Name="PoeniDomaciTim" ColumnName="PoeniDomaciTim" />
                 <ScalarProperty Name="GostujuciTim" ColumnName="GostujuciTim" />

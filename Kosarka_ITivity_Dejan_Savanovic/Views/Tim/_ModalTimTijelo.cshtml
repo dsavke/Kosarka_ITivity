@@ -18,7 +18,7 @@
 
         <div class="row mt-4">
             <label class="col-3">Naziv</label>
-            <input class="form-control col-9" type="text" id="Naziv" value="@Model.Naziv"/>
+            <input class="form-control col-9" type="text" id="Naziv" value="@Model.Naziv" />
         </div>
         <div class="row mt-4">
             <label class="col-3">Trener</label>
@@ -26,7 +26,11 @@
         </div>
         <div class="row mt-4">
             <label class="col-3">Stadion</label>
-            <input class="form-control col-9" type="text" id="NazivStadiona" value="@Model.NazivStadiona"/>
+            <input class="form-control col-9" type="text" id="NazivStadiona" value="@Model.NazivStadiona" />
+        </div>
+        <div class="row mt-4">
+            <label class="col-3">Kapacitet stadiona</label>
+            <input class="form-control col-9" type="text" id="BrojGledalaca" value="@Model.BrojGledalaca" />
         </div>
         <div class="row mt-4">
             <label class="col-3">Grad</label>
@@ -34,9 +38,9 @@
             @Html.DropDownList("GradID", ViewBag.Gradovi as List<SelectListItem>
     , new { @class = "form-control col-9" })
 
-    
 
-</div>
+
+        </div>
 
     </div>
 </div>

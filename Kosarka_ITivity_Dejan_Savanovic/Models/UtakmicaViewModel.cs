@@ -17,12 +17,14 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Models
         public int BrojGledalaca { get; set; }
         public string Stadion { get; set; }
         public int BrojMogucihGledalaca { get; set; }
-        public int PoeniPrvaCetvrtina { get; set; }
-        public int PoeniDrugaCetvrtina { get; set; }
-        public int PoeniTrecaCetvrtina { get; set; }
-        public int PoeniCetvrtaCetvrtina { get; set; }
-        public int PoeniProduzetak { get; set; }
-        public int DomaciTimSlikaID { get; set; }
-        public int GostujuciTimSlikaID { get; set; }
+        public byte PoeniPrvaCetvrtina { get; set; }
+        public byte PoeniDrugaCetvrtina { get; set; }
+        public byte PoeniTrecaCetvrtina { get; set; }
+        public byte PoeniCetvrtaCetvrtina { get; set; }
+        public byte PoeniProduzetak { get; set; }
+        public int? DomaciTimSlikaID { get; set; }
+        public int? GostujuciTimSlikaID { get; set; }
+        public string DomaciTimNaziv { get; set; }
+        public string GostujuciTimNaziv { get; set; }
     }
 }

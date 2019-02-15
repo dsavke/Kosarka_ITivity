@@ -29,6 +29,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.DBModels
         public string NazivStadiona { get; set; }
         public string Trener { get; set; }
         public Nullable<int> SlikaID { get; set; }
+        public int BrojGledalaca { get; set; }
     
         public virtual Grad Grad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

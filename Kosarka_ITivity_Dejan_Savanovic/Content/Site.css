@@ -29,3 +29,11 @@ textarea {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.fa-edit:hover {
+    color: #DF691A;
+}
+
+.fa-trash:hover {
+    color: #DF691A;
+}

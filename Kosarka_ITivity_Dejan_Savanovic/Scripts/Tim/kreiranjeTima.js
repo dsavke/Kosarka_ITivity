@@ -23,7 +23,8 @@
             naziv: $("#Naziv").val(),
             trener: $("#Trener").val(),
             stadionNaziv: $("#NazivStadiona").val(),
-            gradID: $("#GradID").val()
+            gradID: $("#GradID").val(),
+            brojGledalaca: $("#BrojGledalaca").val()
         };
 
         console.log(data);
@@ -62,7 +63,8 @@
             naziv: $("#txtNaziv").val(),
             trener: $("#txtTrener").val(),
             stadionNaziv: $("#txtNazivStadiona").val(),
-            gradID: $("#txtGradID").val()
+            gradID: $("#txtGradID").val(),
+            brojGledalaca: $("#txtBrojGledalaca").val()
         };    
 
         $.post("/Tim/Create", data, function (result, status) {

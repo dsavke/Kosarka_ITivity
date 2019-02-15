@@ -72,11 +72,43 @@ function ograniciDatum(ispod) {
                 var podaci = {
 
                     pocetniDatum: dateStr.substr(0, 10),
-                    krajDatum: dateStr.substr(14, 10)
+                    krajDatum: dateStr.substr(14, 10),
+                    id: $("#KoloID").val()
 
                 };
 
+                //console.log(podaci);
+
+                $.get("/Kolo/GetRaspored", podaci, function (result, status) {
+
+                    $("#utakmice").html(result);
+
+                    $(".detaljiUtakmice").click(function () {
+                        console.log("kliknuta utakmica");
+                    });
+
+                });
+
             }
+        });
+
+
+        var podaci = {
+
+            pocetniDatum: $("#datum").val().substr(0, 10),
+            krajDatum: $("#datum").val().substr(14, 10),
+            id: $("#KoloID").val()
+
+        };
+
+        $.get("/Kolo/GetRaspored", podaci, function (result, status) {
+
+            $("#utakmice").html(result);
+
+            $(".detaljiUtakmice").click(function () {
+                console.log("kliknuta utakmica");
+            });
+
         });
 
     });
@@ -85,5 +117,7 @@ function ograniciDatum(ispod) {
 
 
 $("#KoloID").change(function () {
+
     ograniciDatum(true);
+
 })
