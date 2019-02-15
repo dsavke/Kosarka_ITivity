@@ -3,8 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
+@*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">*@
+
+<link rel="stylesheet" href="~/Content/Flatpicr/flatpicr-css.css">
+<link rel="stylesheet" href="~/Content/Flatpicr/airbnb.css">
+
 <div class="col mt-5">
     <div class="row">
         <div class="col-5 bg-dark pl-3 pr-3 pb-4">
@@ -94,6 +98,7 @@
 
 
 @section scripts{
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>*@
+    <script src="~/Scripts/Flatpicr/flatpicr.js"></script>
     <script src="~/Scripts/Kolo/koloKontroler.js"></script>
 }

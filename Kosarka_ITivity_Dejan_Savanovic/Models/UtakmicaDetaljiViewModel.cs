@@ -30,5 +30,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Models
         public byte GostiTrecaCetvrtina { get; set; }
         public byte GostiCetvrtaCetvrtina { get; set; }
         public byte GostiProduzetak { get; set; }
+        public int DomaciTimID { get; set; }
+        public int GostujuciTimID { get; set; }
     }
 }

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Kosarka_ITivity_Dejan_Savanovic.Models.UcinakIgracaViewModel>
+
+@{ 
+
+<div class="container pt-3 pb-3">
+
+    <table class="table table-bordered table-responsive-md table-responsive-lg">
+
+        <thead>
+
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Igrac</th>
+                <th scope="col">Min</th>
+                <th scope="col">Pts</th>
+                <th scope="col">2FG</th>
+                <th scope="col">3FG</th>
+                <th scope="col">FT</th>
+                <th scope="col">Skokovi</th>
+                <th scope="col">Asistencije</th>
+                <th scope="col">Ukradene</th>
+                <th scope="col">Izgubljene</th>
+                <th scope="col">Faulovi</th>
+            </tr>
+
+        </thead>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td scope="row">@item.BrojDresa</td>
+                <td scope="row"><a style="color:#DF691A;font-weight:bold" href="@item.IgracID">@item.ImeIPrezime</a></td>
+                <td scope="row">@item.BrojMinuta</td>
+                <td scope="row">poeni</td>
+                <td scope="row">@item.PogodjenihDvojki/@item.UkupnoDvojki</td>
+                <td scope="row">@item.PogodjenihTrojki/@item.UkupnoTrojki</td>
+                <td scope="row">@item.PogodjenihSlobodnihBacanja/@item.UkupnoSlobodnihBacanja</td>
+                <td scope="row">@item.Skokovi</td>
+                <td scope="row">@item.Asistencije</td>
+                <td scope="row">@item.UkradeneLopte</td>
+                <td scope="row">@item.IzgubljeneLopte</td>
+                <td scope="row">@item.Faulova</td>
+            </tr>
+
+
+            @*<div class="row">
+
+                <p>@item.ImeIPrezime</p>
+                <p>@item.ImeIPrezime</p>
+                <p>@item.ImeIPrezime</p>
+                <p>@item.ImeIPrezime</p>
+
+            </div>*@
+
+        }
+
+    </table>
+
+</div>
+
+
+}

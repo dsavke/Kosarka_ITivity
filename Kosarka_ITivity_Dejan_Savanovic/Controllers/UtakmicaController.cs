@@ -42,11 +42,49 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     GostiDrugaCetvrtina = utakmica.DrugaCetvrtinaGosti,
                     GostiProduzetak = utakmica.ProduzetakGosti,
                     GostiPrvaCetvrtina = utakmica.PrvaCetvrtinaGosti,
-                    GostiTrecaCetvrtina = utakmica.TrecaCetvrtinaGosti
+                    GostiTrecaCetvrtina = utakmica.TrecaCetvrtinaGosti,
+                    DomaciTimID = utakmica.DomaciTimPokazatelj.TimID,
+                    GostujuciTimID = utakmica.GostujuciTimPokazatelj.TimID
                 };
 
                 return View(utakmicaDetaljiViewModel);
             }
         }
+
+        public ActionResult GetUcinakIgraca(int utakmicaID, int timID)
+        {
+            using(var context = new KosarkaContext())
+            {
+
+                var tim = context.Tims.Find(timID);
+
+                var ucinakIgraca = tim.UcinakIgracas.Where(u => u.UtakmicaID == utakmicaID).Select(u =>
+                new UcinakIgracaViewModel()
+                {
+                    ImeIPrezime = u.Igrac.Ime + " " + u.Igrac.Prezime,
+                    BrojDresa = u.Igrac.BrojDresa,
+                    Asistencije = u.Asistencije,
+                    Blokade = u.Blokade,
+                    BrojMinuta = u.BrojMinuta,
+                    Faulova = u.Faulova,
+                    IzgubljeneLopte = u.IzgubljeneLopte,
+                    PogodjenihDvojki = u.PogodjenihDvojki,
+                    PogodjenihSlobodnihBacanja = u.PogodjenihSlobodnihBacanja,
+                    PogodjenihTrojki = u.PogodjenihTrojki,
+                    IgracID = u.IgracID,
+                    Skokovi = u.Skokovi,
+                    TimID = u.TimID,
+                    UcinakIgracaID = u.UcinakIgracaID,
+                    UkradeneLopte = u.UkradeneLopte,
+                    UkupnoDvojki = u.UkupnoDvojki,
+                    UkupnoSlobodnihBacanja = u.UkupnoSlobodnihBacanja,
+                    UkupnoTrojki = u.UkupnoTrojki,
+                    UtakmicaID = u.UtakmicaID
+                }).ToList();
+
+                return PartialView("_GetUcinakIgraca", ucinakIgraca);
+            }
+        }
+
     }
 }

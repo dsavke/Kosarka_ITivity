@@ -45,27 +45,36 @@
 
     </div>
 
-    <div class="bg-dark mt-3 pt-3">
+    <div class="bg-dark mt-3 pt-2">
        
         <div class="row">
 
-            <div class="col-6">
+            <div class="col-6 pt-3">
 
-                <p class="pl-2">Dvorana: @Model.Stadion</p>
-                <p class="pl-2">Broj gledalaca: @Model.BrojGledalaca</p>
+                <p class="pl-4">Dvorana: @Model.Stadion</p>
+                <p class="pl-4">Broj gledalaca: @Model.BrojGledalaca</p>
 
             </div>
 
             <div class="col-6">
 
-                <table class="table table-bordered mr-3">
+                <table class="table table-bordered col-11 mt-2">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">1QT</th>
+                            <th scope="col" class="text-center">2QT</th>
+                            <th scope="col" class="text-center">3QT</th>
+                            <th scope="col" class="text-center">4QT</th>
+                            <th scope="col" class="text-center">OT</th>
+                        </tr>
+                    </thead>
                     <tbody>
                          <tr class="">
-                                <td class="pt-0 pb-0 pr-0" style="padding-left:20px; width:50px">@Model.PoeniPrvaCetvrtina <br /> @Model.GostiPrvaCetvrtina</td>
-                                <td class="pt-0 pb-0 pr-0" style="padding-left:20px; width:50px">@Model.PoeniDrugaCetvrtina<br /> @Model.GostiDrugaCetvrtina</td>
-                                <td class="pt-0 pb-0 pr-0" style="padding-left:20px; width:50px">@Model.PoeniTrecaCetvrtina<br /> @Model.GostiTrecaCetvrtina</td>
-                                <td class="pt-0 pb-0 pr-0" style="padding-left:20px; width:50px">@Model.PoeniCetvrtaCetvrtina<br /> @Model.GostiCetvrtaCetvrtina</td>
-                                <td class="pt-0 pb-0 pr-0" style="padding-left:20px; width:50px">@Model.PoeniProduzetak<br /> @Model.GostiProduzetak</td>
+                                <td scope="row" class="p-0 text-center" ><span style="@(Model.PoeniPrvaCetvrtina > Model.GostiPrvaCetvrtina?"color:#DF691A;font-weight:bold":"")">@Model.PoeniPrvaCetvrtina</span> <br /> <span style="@(Model.GostiPrvaCetvrtina > Model.PoeniPrvaCetvrtina?"color:#DF691A;font-weight:bold":"")">@Model.GostiPrvaCetvrtina</span></td>
+                                <td scope="row" class="p-0 text-center" ><span style="@(Model.PoeniDrugaCetvrtina > Model.GostiDrugaCetvrtina?"color:#DF691A;font-weight:bold":"")">@Model.PoeniDrugaCetvrtina</span><br /> <span style="@(Model.GostiDrugaCetvrtina > Model.PoeniDrugaCetvrtina?"color:#DF691A;font-weight:bold":"")">@Model.GostiDrugaCetvrtina</span></td>
+                                <td scope="row" class="p-0 text-center" ><span style="@(Model.PoeniTrecaCetvrtina > Model.GostiTrecaCetvrtina?"color:#DF691A;font-weight:bold":"")">@Model.PoeniTrecaCetvrtina</span><br /> <span style="@(Model.GostiTrecaCetvrtina > Model.PoeniTrecaCetvrtina?"color:#DF691A;font-weight:bold":"")">@Model.GostiTrecaCetvrtina</span></td>
+                                <td scope="row" class="p-0 text-center" ><span style="@(Model.PoeniCetvrtaCetvrtina > Model.GostiCetvrtaCetvrtina?"color:#DF691A;font-weight:bold":"")">@Model.PoeniCetvrtaCetvrtina</span><br /><span style="@(Model.GostiCetvrtaCetvrtina > Model.PoeniCetvrtaCetvrtina?"color:#DF691A;font-weight:bold":"")"> @Model.GostiCetvrtaCetvrtina</span></td>
+                                <td scope="row" class="p-0 text-center" ><span style="@(Model.PoeniProduzetak > Model.GostiProduzetak?"color:#DF691A;font-weight:bold":"")">@Model.PoeniProduzetak</span><br /> <span style="@(Model.GostiProduzetak > Model.PoeniProduzetak?"color:#DF691A;font-weight:bold":"")">@Model.GostiProduzetak</span></td>
                             </tr>
 
                     </tbody>
@@ -83,12 +92,18 @@
 
             <div class="row">
 
-                <button class="btn btn-secondary col-6">@Model.DomaciTimNaziv</button>
-                <button class="btn btn-secondary col-6">@Model.GostujuciTimNaziv</button>
+                <div class="col-6 p-2" id="btnDomaci" data-utakmicaID="@Model.UtakmicaID" data-timID="@Model.DomaciTimID">
+                    <p class="col-12 p-0 m-0 text-center">@Model.DomaciTimNaziv.ToUpper()</p>
+                </div>
+
+                <div class="col-6 p-2" id="btnGosti" data-utakmicaID="@Model.UtakmicaID" data-timID="@Model.GostujuciTimID">
+                    <p class="col-12 p-0 m-0 text-center">@Model.GostujuciTimNaziv.ToUpper()</p>
+                </div>
+
 
             </div>
 
-            <div class="bg-dark" style="height:500px">
+            <div class="bg-dark" id="prikazIgraca">
 
             </div>
 
@@ -97,3 +112,7 @@
     </div>
 
 </div>
+
+@section scripts{
+    <script src="~/Scripts/Utakmica/tabUcinakIgraca.js"></script>    
+}
