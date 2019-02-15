@@ -106,7 +106,9 @@ function ograniciDatum(ispod) {
             $("#utakmice").html(result);
 
             $(".detaljiUtakmice").click(function () {
-                console.log("kliknuta utakmica");
+
+                window.location.href = '/Utakmica/Index?utakmicaID=' + $(this).data('utakmicaid');
+
             });
 
         });

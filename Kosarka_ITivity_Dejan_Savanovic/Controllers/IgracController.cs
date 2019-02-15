@@ -26,7 +26,8 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     GradID = i.GradID,
                     PozicijaID = i.PozicijaID,
                     SlikaID = i.SlikaID,
-                    TimID = i.TimID
+                    TimID = i.TimID,
+                    BrojDresa = i.BrojDresa
                 }).ToList();
                 return View(igraci);
 
@@ -64,7 +65,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(string ime, string prezime, int pozicijaID, string drzava, int slikaID, string slika, DateTime datumRodjenja, int timID, int gradID)
+        public ActionResult Create(string ime, string prezime, int pozicijaID, string drzava, int slikaID, string slika, DateTime datumRodjenja, int timID, int gradID, byte brojDresa)
         {
 
             /*try
@@ -95,7 +96,8 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                         DatumRodjenja = datumRodjenja,
                         TimID = timID,
                         SlikaID = s.SlikaID,
-                        GradID = gradID
+                        GradID = gradID,
+                        BrojDresa = brojDresa
                     };
 
                     context.Igracs.Add(igrac);
@@ -112,7 +114,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(string ime, string prezime, int pozicijaID, string drzava, int slikaID, string slika, DateTime datumRodjenja, int timID, int gradID, int igracID)
+        public ActionResult Edit(string ime, string prezime, int pozicijaID, string drzava, int slikaID, string slika, DateTime datumRodjenja, int timID, int gradID, int igracID, byte brojDresa)
         {
 
             using (var context = new KosarkaContext())
@@ -142,6 +144,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                 igrac.TimID = timID;
                 igrac.SlikaID = s.SlikaID;
                 igrac.GradID = gradID;
+                igrac.BrojDresa = brojDresa;
 
                 context.SaveChanges();
 
@@ -172,7 +175,8 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     Drzava = igrac.Drzava,
                     SlikaID = igrac.SlikaID,
                     DatumRodjenja = igrac.DatumRodjenja,
-                    TimID = igrac.TimID
+                    TimID = igrac.TimID,
+                    BrojDresa = igrac.BrojDresa
                 };
 
                 ViewBag.Gradovi = context.Grads.Select(g =>
@@ -196,7 +200,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     Value = "" + p.PozicijaID
                 }).ToList();
 
-                return PartialView("_IgracModal", igracViewModel);
+                return PartialView("_IgracModalEdit", igracViewModel);
             }
         }
 

@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7b1674c8fa0743b1bcbfabe1e9c308d4" Name="Diagram1" ZoomLevel="81">
-        <EntityTypeShape EntityType="Kosarka_Model.Grad" Width="1.5" PointX="0.75" PointY="9.125" />
-        <EntityTypeShape EntityType="Kosarka_Model.Igrac" Width="1.5" PointX="3" PointY="4.875" />
-        <EntityTypeShape EntityType="Kosarka_Model.Kolo" Width="1.5" PointX="9" PointY="0.75" />
-        <EntityTypeShape EntityType="Kosarka_Model.Pozicija" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="Kosarka_Model.Grad" Width="1.5" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="Kosarka_Model.Igrac" Width="1.5" PointX="5.25" PointY="4.875" />
+        <EntityTypeShape EntityType="Kosarka_Model.Kolo" Width="1.5" PointX="8" PointY="0.75" />
+        <EntityTypeShape EntityType="Kosarka_Model.Pozicija" Width="1.5" PointX="3" PointY="1.625" />
         <EntityTypeShape EntityType="Kosarka_Model.Slika" Width="1.5" PointX="0.75" PointY="5.875" />
-        <EntityTypeShape EntityType="Kosarka_Model.Tim" Width="1.5" PointX="6" PointY="5" />
-        <EntityTypeShape EntityType="Kosarka_Model.UcinakIgraca" Width="1.5" PointX="8.25" PointY="4.25" />
-        <EntityTypeShape EntityType="Kosarka_Model.Utakmica" Width="1.5" PointX="11.25" PointY="4.625" />
+        <EntityTypeShape EntityType="Kosarka_Model.Tim" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="Kosarka_Model.UcinakIgraca" Width="1.5" PointX="7.5" PointY="4.375" />
+        <EntityTypeShape EntityType="Kosarka_Model.Utakmica" Width="1.5" PointX="10.25" PointY="4.125" />
         <AssociationConnector Association="Kosarka_Model.FK_Igrac_Grad" />
         <AssociationConnector Association="Kosarka_Model.FK_Tim_Grad" />
         <AssociationConnector Association="Kosarka_Model.FK_Igrac_Pozicija" />

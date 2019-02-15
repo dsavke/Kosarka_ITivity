@@ -25,6 +25,7 @@
           <Property Name="TimID" Type="int" Nullable="false" />
           <Property Name="PozicijaID" Type="int" Nullable="false" />
           <Property Name="SlikaID" Type="int" />
+          <Property Name="BrojDresa" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="Kolo">
           <Key>
@@ -101,6 +102,11 @@
           <Property Name="PoeniCetvrtaCetvrtina" Type="tinyint" Nullable="false" />
           <Property Name="PoeniProduzetak" Type="tinyint" Nullable="false" />
           <Property Name="BrojGledalaca" Type="int" Nullable="false" />
+          <Property Name="PrvaCetvrtinaGosti" Type="tinyint" Nullable="false" />
+          <Property Name="DrugaCetvrtinaGosti" Type="tinyint" Nullable="false" />
+          <Property Name="TrecaCetvrtinaGosti" Type="tinyint" Nullable="false" />
+          <Property Name="CetvrtaCetvrtinaGosti" Type="tinyint" Nullable="false" />
+          <Property Name="ProduzetakGosti" Type="tinyint" Nullable="false" />
         </EntityType>
         <Association Name="FK_Igrac_Grad">
           <End Role="Grad" Type="Self.Grad" Multiplicity="1" />
@@ -388,6 +394,7 @@
           <Property Name="TimID" Type="Int32" Nullable="false" />
           <Property Name="PozicijaID" Type="Int32" Nullable="false" />
           <Property Name="SlikaID" Type="Int32" />
+          <Property Name="BrojDresa" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Grad" Relationship="Kosarka_Model.FK_Igrac_Grad" FromRole="Igrac" ToRole="Grad" />
           <NavigationProperty Name="Pozicija" Relationship="Kosarka_Model.FK_Igrac_Pozicija" FromRole="Igrac" ToRole="Pozicija" />
           <NavigationProperty Name="Slika" Relationship="Kosarka_Model.FK_Igrac_Slika" FromRole="Igrac" ToRole="Slika" />
@@ -482,6 +489,11 @@
           <Property Name="PoeniCetvrtaCetvrtina" Type="Byte" Nullable="false" />
           <Property Name="PoeniProduzetak" Type="Byte" Nullable="false" />
           <Property Name="BrojGledalaca" Type="Int32" Nullable="false" />
+          <Property Name="PrvaCetvrtinaGosti" Type="Byte" Nullable="false" />
+          <Property Name="DrugaCetvrtinaGosti" Type="Byte" Nullable="false" />
+          <Property Name="TrecaCetvrtinaGosti" Type="Byte" Nullable="false" />
+          <Property Name="CetvrtaCetvrtinaGosti" Type="Byte" Nullable="false" />
+          <Property Name="ProduzetakGosti" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Kolo" Relationship="Kosarka_Model.FK_Utakmica_Kolo" FromRole="Utakmica" ToRole="Kolo" />
           <NavigationProperty Name="DomaciTimPokazatelj" Relationship="Kosarka_Model.FK_Utakmica_Tim" FromRole="Utakmica" ToRole="Tim" />
           <NavigationProperty Name="GostujuciTimPokazatelj" Relationship="Kosarka_Model.FK_Utakmica_Tim1" FromRole="Utakmica" ToRole="Tim" />
@@ -648,6 +660,7 @@
           <EntitySetMapping Name="Igracs">
             <EntityTypeMapping TypeName="Kosarka_Model.Igrac">
               <MappingFragment StoreEntitySet="Igrac">
+                <ScalarProperty Name="BrojDresa" ColumnName="BrojDresa" />
                 <ScalarProperty Name="SlikaID" ColumnName="SlikaID" />
                 <ScalarProperty Name="PozicijaID" ColumnName="PozicijaID" />
                 <ScalarProperty Name="TimID" ColumnName="TimID" />
@@ -726,6 +739,11 @@
           <EntitySetMapping Name="Utakmicas">
             <EntityTypeMapping TypeName="Kosarka_Model.Utakmica">
               <MappingFragment StoreEntitySet="Utakmica">
+                <ScalarProperty Name="ProduzetakGosti" ColumnName="ProduzetakGosti" />
+                <ScalarProperty Name="CetvrtaCetvrtinaGosti" ColumnName="CetvrtaCetvrtinaGosti" />
+                <ScalarProperty Name="TrecaCetvrtinaGosti" ColumnName="TrecaCetvrtinaGosti" />
+                <ScalarProperty Name="DrugaCetvrtinaGosti" ColumnName="DrugaCetvrtinaGosti" />
+                <ScalarProperty Name="PrvaCetvrtinaGosti" ColumnName="PrvaCetvrtinaGosti" />
                 <ScalarProperty Name="BrojGledalaca" ColumnName="BrojGledalaca" />
                 <ScalarProperty Name="PoeniProduzetak" ColumnName="PoeniProduzetak" />
                 <ScalarProperty Name="PoeniCetvrtaCetvrtina" ColumnName="PoeniCetvrtaCetvrtina" />

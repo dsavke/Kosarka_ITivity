@@ -33,6 +33,11 @@ namespace Kosarka_ITivity_Dejan_Savanovic.DBModels
         public byte PoeniCetvrtaCetvrtina { get; set; }
         public byte PoeniProduzetak { get; set; }
         public int BrojGledalaca { get; set; }
+        public byte PrvaCetvrtinaGosti { get; set; }
+        public byte DrugaCetvrtinaGosti { get; set; }
+        public byte TrecaCetvrtinaGosti { get; set; }
+        public byte CetvrtaCetvrtinaGosti { get; set; }
+        public byte ProduzetakGosti { get; set; }
     
         public virtual Kolo Kolo { get; set; }
         public virtual Tim DomaciTimPokazatelj { get; set; }

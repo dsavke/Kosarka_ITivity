@@ -29,6 +29,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.DBModels
         public int TimID { get; set; }
         public int PozicijaID { get; set; }
         public Nullable<int> SlikaID { get; set; }
+        public byte BrojDresa { get; set; }
     
         public virtual Grad Grad { get; set; }
         public virtual Pozicija Pozicija { get; set; }

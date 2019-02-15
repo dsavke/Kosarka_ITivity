@@ -141,6 +141,7 @@
     <Compile Include="Controllers\KoloController.cs" />
     <Compile Include="Controllers\PocetnaController.cs" />
     <Compile Include="Controllers\TimController.cs" />
+    <Compile Include="Controllers\UtakmicaController.cs" />
     <Compile Include="DBModels\Grad.cs">
       <DependentUpon>KosarkaContext.tt</DependentUpon>
     </Compile>
@@ -187,6 +188,7 @@
     <Compile Include="Models\KoloViewModel.cs" />
     <Compile Include="Models\RangTimovaViewModel.cs" />
     <Compile Include="Models\TimViewModel.cs" />
+    <Compile Include="Models\UtakmicaDetaljiViewModel.cs" />
     <Compile Include="Models\UtakmicaPrikazViewModel.cs" />
     <Compile Include="Models\UtakmicaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -264,6 +266,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\Utakmica\ukupanRezultatUtakmice.js" />
     <Content Include="Scripts\Utakmica\utakmicaIzgled.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -300,6 +303,8 @@
     <Content Include="Views\Kolo\_UtakmicaCreateEditForm.cshtml" />
     <Content Include="Views\Kolo\_UtakmicaEditRezultat.cshtml" />
     <Content Include="Views\Kolo\_RasporedUtakmica.cshtml" />
+    <Content Include="Views\Igrac\_IgracModalEdit.cshtml" />
+    <Content Include="Views\Utakmica\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

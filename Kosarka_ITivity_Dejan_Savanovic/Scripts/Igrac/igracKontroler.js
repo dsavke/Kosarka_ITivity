@@ -1,5 +1,15 @@
 ﻿$(document).ready(function () {
 
+    $("#btnClose1").click(function () {
+        console.log("create");
+        $("#modalIgracCreate").modal('hide');
+    });
+
+    $("#btnClose2").click(function () {
+        console.log("edit");
+        $("#modalIgracEdit").modal('hide');
+    });
+
     $("#btnKreirajIgraca").click(function () {
 
         $.get("/Igrac/Create", function (result, status) {
@@ -22,7 +32,8 @@
             slika: $("#Slika").attr("src"),
             datumRodjenja: $("#DatumRodjenja").val(),
             timID: $("#TimID").val(),
-            gradID: $("#GradID").val()
+            gradID: $("#GradID").val(),
+            brojDresa: $("#BrojDresa").val()
         };
 
         console.log(data);
@@ -58,17 +69,20 @@
     $("#btnAzuriraj").click(function () {
 
         var data = {
-            ime: $("#Ime").val(),
-            prezime: $("#Prezime").val(),
-            pozicijaID: $("#PozicijaID").val(),
-            drzava: $("#Drzava").val(),
-            slikaID: $("#SlikaID").val(),
-            slika: $("#Slika").attr("src"),
-            datumRodjenja: $("#DatumRodjenja").val(),
-            timID: $("#TimID").val(),
-            gradID: $("#GradID").val(),
-            igracID: $("#IgracID").val()
+            ime: $("#txtIme").val(),
+            prezime: $("#txtPrezime").val(),
+            pozicijaID: $("#txtPozicijaID").val(),
+            drzava: $("#txtDrzava").val(),
+            slikaID: $("#txtSlikaID").val(),
+            slika: $("#txtSlika").attr("src"),
+            datumRodjenja: $("#txtDatumRodjenja").val(),
+            timID: $("#txtTimID").val(),
+            gradID: $("#txtGradID").val(),
+            igracID: $("#txtIgracID").val(),
+            brojDresa: $("#txtBrojDresa").val()
         };
+
+        console.log(data);
 
         $.post("/Igrac/Edit", data, function (result, status) {
 
@@ -87,14 +101,18 @@
 
 function changeImage(input, slika) {
     var idSlike = '#' + slika.id;
+
     if (input.files && input.files[0]) {
 
-        $("#SlikaID").val("-1");
+        if (idSlike.startsWith("#txt")) $("#txtSlikaID").val("-1");
+        else $("#SlikaID").val("-1");
+
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $(idSlike)
-                .attr('src', e.target.result);
+
+            $(idSlike).attr('src', e.target.result);
+ 
         };
 
         reader.readAsDataURL(input.files[0]);

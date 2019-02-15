@@ -191,7 +191,12 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     Stadion = utakmica.DomaciTimPokazatelj.NazivStadiona,
                     UtakmicaID = utakmica.UtakmicaID,
                     DomaciTimNaziv = utakmica.DomaciTimPokazatelj.Naziv,
-                    GostujuciTimNaziv = utakmica.GostujuciTimPokazatelj.Naziv
+                    GostujuciTimNaziv = utakmica.GostujuciTimPokazatelj.Naziv,
+                    GostiCetvrtaCetvrtina = utakmica.CetvrtaCetvrtinaGosti,
+                    GostiDrugaCetvrtina = utakmica.DrugaCetvrtinaGosti,
+                    GostiProduzetak = utakmica.ProduzetakGosti,
+                    GostiPrvaCetvrtina = utakmica.PrvaCetvrtinaGosti,
+                    GostiTrecaCetvrtina = utakmica.TrecaCetvrtinaGosti
                 };
 
                 return PartialView("_UtakmicaEditRezultat", utakmicaView);
@@ -218,7 +223,12 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     PoeniDrugaCetvrtina = model.PoeniDrugaCetvrtina,
                     PoneiTrecaCetvrtina = model.PoeniTrecaCetvrtina,
                     PoeniCetvrtaCetvrtina = model.PoeniCetvrtaCetvrtina,
-                    PoeniProduzetak = model.PoeniProduzetak
+                    PoeniProduzetak = model.PoeniProduzetak,
+                    CetvrtaCetvrtinaGosti = model.GostiCetvrtaCetvrtina,
+                    DrugaCetvrtinaGosti = model.GostiDrugaCetvrtina,
+                    ProduzetakGosti = model.GostiProduzetak,
+                    PrvaCetvrtinaGosti = model.GostiPrvaCetvrtina,
+                    TrecaCetvrtinaGosti = model.GostiTrecaCetvrtina
                 };
 
                 context.Utakmicas.Add(utakmica);
@@ -249,6 +259,11 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                 utakmica.PoneiTrecaCetvrtina = model.PoeniTrecaCetvrtina;
                 utakmica.PoeniCetvrtaCetvrtina = model.PoeniCetvrtaCetvrtina;
                 utakmica.PoeniProduzetak = model.PoeniProduzetak;
+                utakmica.CetvrtaCetvrtinaGosti = model.GostiCetvrtaCetvrtina;
+                utakmica.DrugaCetvrtinaGosti = model.GostiDrugaCetvrtina;
+                utakmica.ProduzetakGosti = model.GostiProduzetak;
+                utakmica.PrvaCetvrtinaGosti = model.GostiPrvaCetvrtina;
+                utakmica.TrecaCetvrtinaGosti = model.GostiTrecaCetvrtina;
 
                 context.SaveChanges();
 
@@ -297,7 +312,12 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     PoeniDrugaCetvrtina = u.PoeniDrugaCetvrtina,
                     PoeniTrecaCetvrtina = u.PoneiTrecaCetvrtina,
                     PoeniCetvrtaCetvrtina = u.PoeniCetvrtaCetvrtina,
-                    PoeniProduzetak = u.PoeniProduzetak
+                    PoeniProduzetak = u.PoeniProduzetak,
+                    GostiCetvrtaCetvrtina = u.CetvrtaCetvrtinaGosti,
+                    GostiDrugaCetvrtina = u.DrugaCetvrtinaGosti,
+                    GostiProduzetak = u.ProduzetakGosti,
+                    GostiPrvaCetvrtina = u.PrvaCetvrtinaGosti,
+                    GostiTrecaCetvrtina = u.TrecaCetvrtinaGosti
                 }).ToList();
 
                 if(krajDatum.Length > 0)

@@ -1,0 +1,99 @@
+﻿@model Kosarka_ITivity_Dejan_Savanovic.Models.UtakmicaDetaljiViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+
+    <div class="bg-dark">
+
+
+        <div class="container">
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <i data-utakmicaID="@Model.UtakmicaID" data-koloID="@Model.KoloID" class="fas fa-trash fa-lg float-right utakmicaDelete"></i>
+                    <i data-utakmicaID="@Model.UtakmicaID" data-koloID="@Model.KoloID" class="fas fa-edit fa-lg float-right mr-2 utakmicaEdit"></i>
+                </div>
+            </div>
+            <div class="row mt-0">
+                <div class="col-4">
+                    <img src='@Url.Action("GetImage", "Pocetna", new { id = Model.DomaciTimSlikaID })' height="150" class="center-element" />
+                </div>
+                <div class="col-4">
+                    <div style="height:160px">
+                        <div class="center-element">
+                            <p class="h5 center-element pb-5 mb-5">@Model.DatumOdigravanja.ToString("dd.MM.yyyy")</p>
+                            <p class="h4 pb-0 mt-3"><span style="color:#DF691A">@Model.PoeniDomaciTim</span>&nbsp;&nbsp;:&nbsp;&nbsp;<span style="color:#DF691A">@Model.PoeniGostujuciTim</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img src='@Url.Action("GetImage", "Pocetna", new { id = Model.GostujuciTimSlikaID })' height="150" class="center-element" />
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-4 text-center h5" style="color:#DF691A">@Model.DomaciTimNaziv</p>
+                <p class="col-4"></p>
+                <p class="col-4 text-center h5" style="color:#DF691A">@Model.GostujuciTimNaziv</p>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    <div class="bg-dark mt-3 pt-3">
+       
+        <div class="row">
+
+            <div class="col-6">
+
+                <p class="pl-2">Dvorana: @Model.Stadion</p>
+                <p class="pl-2">Broj gledalaca: @Model.BrojGledalaca</p>
+
+            </div>
+
+            <div class="col-6">
+
+                <table class="table table-bordered mr-3">
+                    <tbody>
+                         <tr class="">
+                                <td class="pt-0 pb-0 pr-0" style="padding-left:20px; width:50px">@Model.PoeniPrvaCetvrtina <br /> @Model.GostiPrvaCetvrtina</td>
+                                <td class="pt-0 pb-0 pr-0" style="padding-left:20px; width:50px">@Model.PoeniDrugaCetvrtina<br /> @Model.GostiDrugaCetvrtina</td>
+                                <td class="pt-0 pb-0 pr-0" style="padding-left:20px; width:50px">@Model.PoeniTrecaCetvrtina<br /> @Model.GostiTrecaCetvrtina</td>
+                                <td class="pt-0 pb-0 pr-0" style="padding-left:20px; width:50px">@Model.PoeniCetvrtaCetvrtina<br /> @Model.GostiCetvrtaCetvrtina</td>
+                                <td class="pt-0 pb-0 pr-0" style="padding-left:20px; width:50px">@Model.PoeniProduzetak<br /> @Model.GostiProduzetak</td>
+                            </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bg-dark mt-3 pt-0">
+
+        <div class="container">
+
+            <div class="row">
+
+                <button class="btn btn-secondary col-6">@Model.DomaciTimNaziv</button>
+                <button class="btn btn-secondary col-6">@Model.GostujuciTimNaziv</button>
+
+            </div>
+
+            <div class="bg-dark" style="height:500px">
+
+            </div>
+
+        </div>
+        
+    </div>
+
+</div>

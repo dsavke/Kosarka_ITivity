@@ -9,15 +9,15 @@
             @foreach (var item in Model)
             {
 
-            <tr class="detaljiUtakmice">
+            <tr class="detaljiUtakmice" data-utakmicaid="@item.UtakmicaID">
                 <th scope="row" style="color:#DF691A" class="pt-4">@item.DatumOdigravanja.ToShortDateString()</th>
                 <td>@item.DomaciTimNaziv<br /> @item.GostujuciTimNaziv</td>
                 <td style="color:#DF691A">@item.PoeniDomaciTim <br />@item.PoeniGostujuciTim</td>
-                <td class="pt-4">@item.PoeniPrvaCetvrtina</td>
-                <td class="pt-4">@item.PoeniDrugaCetvrtina</td>
-                <td class="pt-4">@item.PoeniTrecaCetvrtina</td>
-                <td class="pt-4">@item.PoeniCetvrtaCetvrtina</td>
-                <td class="pt-4">@item.PoeniProduzetak</td>
+                <td class="pt-0">@item.PoeniPrvaCetvrtina <br /> @item.GostiPrvaCetvrtina</td>
+                <td class="pt-0">@item.PoeniDrugaCetvrtina<br /> @item.GostiDrugaCetvrtina</td>
+                <td class="pt-0">@item.PoeniTrecaCetvrtina<br /> @item.GostiTrecaCetvrtina</td>
+                <td class="pt-0">@item.PoeniCetvrtaCetvrtina<br /> @item.GostiCetvrtaCetvrtina</td>
+                <td class="pt-0">@item.PoeniProduzetak<br /> @item.GostiProduzetak</td>
             </tr>
 
             }
