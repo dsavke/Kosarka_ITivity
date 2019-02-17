@@ -176,6 +176,7 @@
             if (result.Success) {
 
                 $("#modalDodajIgraca").modal('hide');
+                $("#Greska").text("");
 
                 if (Number($("#btnDomaci").data('timid')) === Number(data.timID)) {
                     $("#btnDomaci").trigger('click');
@@ -184,7 +185,7 @@
                 }
 
             } else {
-                console.log(result.Message);
+                $("#Greska").text(result.Message);
             }
 
         });
@@ -221,6 +222,7 @@
             if (result.Success) {
 
                 $("#modalEditIgraca").modal('hide');
+                $("#txtGreska").text("");
 
                 if (Number($("#btnDomaci").data('timid')) === Number(data.timID)) {
                     $("#btnDomaci").trigger('click');
@@ -229,7 +231,7 @@
                 }
 
             } else {
-                console.log(result.Message);
+                $("#txtGreska").text(result.Message);
             }
 
         });

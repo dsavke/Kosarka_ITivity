@@ -130,31 +130,48 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
 
             using(var context = new KosarkaContext())
             {
-                UcinakIgraca ucinakIgraca = new UcinakIgraca()
+
+                var utakmica = context.Utakmicas.Find(utakmicaID);
+                var tim = context.Tims.Find(timID);
+
+                var brojKosevaRezultat = utakmica.DomaciTim == tim.TimID ? utakmica.PoeniDomaciTim : utakmica.PoeniGostujuciTim;
+
+                int? trenutnoKoseva = utakmica.UcinakIgracas.Where(t => t.TimID == tim.TimID).Sum(t => t.Poeni);
+
+                if (trenutnoKoseva == null) trenutnoKoseva = 0;
+
+                if (trenutnoKoseva + poeni <= brojKosevaRezultat) {
+
+                    UcinakIgraca ucinakIgraca = new UcinakIgraca()
+                    {
+                        Asistencije = asistencije,
+                        Blokade = blokade,
+                        BrojMinuta = brojMinuta,
+                        Faulova = faulovi,
+                        IgracID = igracID,
+                        IzgubljeneLopte = izgubljene,
+                        Poeni = poeni,
+                        PogodjenihDvojki = pDvojki,
+                        PogodjenihSlobodnihBacanja = pSB,
+                        PogodjenihTrojki = pTrojki,
+                        Skokovi = skokovoi,
+                        TimID = timID,
+                        UkradeneLopte = ukradene,
+                        UkupnoDvojki = uDvojki,
+                        UkupnoSlobodnihBacanja = uSB,
+                        UkupnoTrojki = uTrojki,
+                        UtakmicaID = utakmicaID
+                    };
+
+                    context.UcinakIgracas.Add(ucinakIgraca);
+                    context.SaveChanges();
+
+                    return Json(new { Success = true });
+                }
+                else
                 {
-                    Asistencije = asistencije,
-                    Blokade = blokade,
-                    BrojMinuta = brojMinuta,
-                    Faulova = faulovi,
-                    IgracID = igracID,
-                    IzgubljeneLopte = izgubljene,
-                    Poeni = poeni,
-                    PogodjenihDvojki = pDvojki,
-                    PogodjenihSlobodnihBacanja = pSB,
-                    PogodjenihTrojki = pTrojki,
-                    Skokovi = skokovoi,
-                    TimID = timID,
-                    UkradeneLopte = ukradene,
-                    UkupnoDvojki = uDvojki,
-                    UkupnoSlobodnihBacanja = uSB,
-                    UkupnoTrojki = uTrojki,
-                    UtakmicaID = utakmicaID
-                };
-
-                context.UcinakIgracas.Add(ucinakIgraca);
-                context.SaveChanges();
-
-                return Json(new { Success = true });
+                    return Json(new { Success = false, Message = "Broj koseva igraca je veci od ukupnog broja koseva!" });
+                }
 
             }
 
@@ -202,29 +219,49 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
 
             using (var context = new KosarkaContext())
             {
-                UcinakIgraca ucinakIgraca = context.UcinakIgracas.Find(ucinakIgracaID);
 
-                ucinakIgraca.Asistencije = asistencije;
-                ucinakIgraca.Blokade = blokade;
-                ucinakIgraca.BrojMinuta = brojMinuta;
-                ucinakIgraca.Faulova = faulovi;
-                ucinakIgraca.IgracID = igracID;
-                ucinakIgraca.IzgubljeneLopte = izgubljene;
-                ucinakIgraca.Poeni = poeni;
-                ucinakIgraca.PogodjenihDvojki = pDvojki;
-                ucinakIgraca.PogodjenihSlobodnihBacanja = pSB;
-                ucinakIgraca.PogodjenihTrojki = pTrojki;
-                ucinakIgraca.Skokovi = skokovoi;
-                ucinakIgraca.TimID = timID;
-                ucinakIgraca.UkradeneLopte = ukradene;
-                ucinakIgraca.UkupnoDvojki = uDvojki;
-                ucinakIgraca.UkupnoSlobodnihBacanja = uSB;
-                ucinakIgraca.UkupnoTrojki = uTrojki;
-                ucinakIgraca.UtakmicaID = utakmicaID;
+                var utakmica = context.Utakmicas.Find(utakmicaID);
+                var tim = context.Tims.Find(timID);
 
-                context.SaveChanges();
+                int trtKoseva = utakmica.UcinakIgracas.Where(t => t.TimID == tim.TimID).Sum(t => t.Poeni);
 
-                return Json(new { Success = true });
+                var brojKosevaRezultat = utakmica.DomaciTim == tim.TimID ? utakmica.PoeniDomaciTim : utakmica.PoeniGostujuciTim;
+
+                int njegovBrojKoseva = context.UcinakIgracas.Find(ucinakIgracaID).Poeni;
+
+                int trenutnoKoseva = trtKoseva - njegovBrojKoseva;
+
+                if (trenutnoKoseva + poeni <= brojKosevaRezultat)
+                {
+
+                    UcinakIgraca ucinakIgraca = context.UcinakIgracas.Find(ucinakIgracaID);
+
+                    ucinakIgraca.Asistencije = asistencije;
+                    ucinakIgraca.Blokade = blokade;
+                    ucinakIgraca.BrojMinuta = brojMinuta;
+                    ucinakIgraca.Faulova = faulovi;
+                    ucinakIgraca.IgracID = igracID;
+                    ucinakIgraca.IzgubljeneLopte = izgubljene;
+                    ucinakIgraca.Poeni = poeni;
+                    ucinakIgraca.PogodjenihDvojki = pDvojki;
+                    ucinakIgraca.PogodjenihSlobodnihBacanja = pSB;
+                    ucinakIgraca.PogodjenihTrojki = pTrojki;
+                    ucinakIgraca.Skokovi = skokovoi;
+                    ucinakIgraca.TimID = timID;
+                    ucinakIgraca.UkradeneLopte = ukradene;
+                    ucinakIgraca.UkupnoDvojki = uDvojki;
+                    ucinakIgraca.UkupnoSlobodnihBacanja = uSB;
+                    ucinakIgraca.UkupnoTrojki = uTrojki;
+                    ucinakIgraca.UtakmicaID = utakmicaID;
+
+                    context.SaveChanges();
+
+                    return Json(new { Success = true });
+                }
+                else
+                {
+                    return Json(new { Success = false, Message = "Broj koseva igraca je veci od ukupnog broja koseva!" });
+                }
 
             }
 

@@ -6,6 +6,10 @@
         @Html.HiddenFor(model => model.UtakmicaID)
         @Html.HiddenFor(model => model.TimID)
 
+        <div>
+            <p style="color:red;" id="Greska"></p>
+        </div>
+
         <div class="col-11 bg-transparent ml-3 mr-3 mt-0" style="height:150px">
 
             <img src='@Url.Action("GetImage", "Pocetna", new { id = 11 })' id="Slika" height="150" width="150" style="display:block;margin:auto;
@@ -38,7 +42,7 @@
 
         <div class="row mt-4">
             <label class="col-3 h6 pl-3 pt-1">Poeni</label>
-            <input class="form-control col-9" type="text" id="Poeni" name="Poeni" />
+            <input disabled class="form-control col-9 bg-white" type="text" id="Poeni" name="Poeni" />
         </div>
 
         <div class="row mt-4">
