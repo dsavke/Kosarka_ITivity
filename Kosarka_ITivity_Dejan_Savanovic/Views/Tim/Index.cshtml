@@ -13,22 +13,16 @@
 <table class="table mt-3">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TimID)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Naziv)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GradID)
+            @Html.DisplayNameFor(model => model.GradNaziv)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NazivStadiona)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Trener)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SlikaID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.BrojGledalaca)
@@ -40,13 +34,10 @@
     {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TimID)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Naziv)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.GradID)
+            @Html.DisplayFor(modelItem => item.GradNaziv)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NazivStadiona)
@@ -55,13 +46,10 @@
             @Html.DisplayFor(modelItem => item.Trener)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SlikaID)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.BrojGledalaca)
         </td>
         <td>
-            <a href="#Edit" data-timID="@item.TimID" class="btnEdit">Edit</a>
+            <a href="#Edit" data-timID="@item.TimID" class="btnEdit">Azuriraj</a>
         </td>
     </tr>
     }
@@ -123,10 +111,6 @@
                     </div>
                 </div>
             </div>
-            @*<div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
-                <button type="button" class="btn btn-primary" id="btnSacuvaj">Sacuvaj</button>
-            </div>*@
 
             <div class="col">
                 <div class="row">

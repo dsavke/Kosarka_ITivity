@@ -26,5 +26,8 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Models
         public byte UkradeneLopte { get; set; }
         public string ImeIPrezime { get; set; }
         public int BrojDresa { get; set; }
+        public int Poeni { get; set; }
+        public string Pozicija { get; set; }
+        public int? SlikaID { get; set; }
     }
 }

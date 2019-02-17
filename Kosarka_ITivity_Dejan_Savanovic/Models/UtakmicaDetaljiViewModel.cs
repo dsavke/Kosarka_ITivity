@@ -32,5 +32,6 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Models
         public byte GostiProduzetak { get; set; }
         public int DomaciTimID { get; set; }
         public int GostujuciTimID { get; set; }
+        public string Grad { get; set; }
     }
 }

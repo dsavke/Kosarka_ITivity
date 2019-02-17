@@ -318,7 +318,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     GostiProduzetak = u.ProduzetakGosti,
                     GostiPrvaCetvrtina = u.PrvaCetvrtinaGosti,
                     GostiTrecaCetvrtina = u.TrecaCetvrtinaGosti
-                }).ToList();
+                }).OrderBy(k => k.DatumOdigravanja).ToList();
 
                 if(krajDatum.Length > 0)
                 {

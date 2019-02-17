@@ -42,7 +42,7 @@
 
             if (result.Success) {
                 $("#modalIgracCreate").modal("hide");
-                console.log(result.Success);
+                document.location.reload();
             } else {
                 console.log(result.Message);
             }
@@ -88,7 +88,7 @@
 
             if (result.Success) {
                 $("#modalIgracEdit").modal("hide");
-                console.log(result.Success);
+                document.location.reload();
             } else {
                 console.log(result.Message);
             }

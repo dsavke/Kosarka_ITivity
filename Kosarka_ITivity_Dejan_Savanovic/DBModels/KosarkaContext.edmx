@@ -84,6 +84,7 @@
           <Property Name="Blokade" Type="tinyint" Nullable="false" />
           <Property Name="IzgubljeneLopte" Type="tinyint" Nullable="false" />
           <Property Name="UkradeneLopte" Type="tinyint" Nullable="false" />
+          <Property Name="Poeni" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Utakmica">
           <Key>
@@ -468,6 +469,7 @@
           <Property Name="Blokade" Type="Byte" Nullable="false" />
           <Property Name="IzgubljeneLopte" Type="Byte" Nullable="false" />
           <Property Name="UkradeneLopte" Type="Byte" Nullable="false" />
+          <Property Name="Poeni" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Igrac" Relationship="Kosarka_Model.FK_UcinakIgraca_Igrac" FromRole="UcinakIgraca" ToRole="Igrac" />
           <NavigationProperty Name="Tim" Relationship="Kosarka_Model.FK_UcinakIgraca_Tim" FromRole="UcinakIgraca" ToRole="Tim" />
           <NavigationProperty Name="Utakmica" Relationship="Kosarka_Model.FK_UcinakIgraca_Utakmica" FromRole="UcinakIgraca" ToRole="Utakmica" />
@@ -716,6 +718,7 @@
           <EntitySetMapping Name="UcinakIgracas">
             <EntityTypeMapping TypeName="Kosarka_Model.UcinakIgraca">
               <MappingFragment StoreEntitySet="UcinakIgraca">
+                <ScalarProperty Name="Poeni" ColumnName="Poeni" />
                 <ScalarProperty Name="UkradeneLopte" ColumnName="UkradeneLopte" />
                 <ScalarProperty Name="IzgubljeneLopte" ColumnName="IzgubljeneLopte" />
                 <ScalarProperty Name="Blokade" ColumnName="Blokade" />

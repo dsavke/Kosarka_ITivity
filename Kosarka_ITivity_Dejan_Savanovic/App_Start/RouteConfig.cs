@@ -16,7 +16,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Pocetna", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

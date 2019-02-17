@@ -27,7 +27,11 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     PozicijaID = i.PozicijaID,
                     SlikaID = i.SlikaID,
                     TimID = i.TimID,
-                    BrojDresa = i.BrojDresa
+                    BrojDresa = i.BrojDresa,
+                    Drzava = i.Drzava,
+                    GradNaziv = i.Grad.Naziv,
+                    PozicijaSkraceno = i.Pozicija.SkraceniNaziv,
+                    TimNaziv = i.Tim.Naziv
                 }).ToList();
                 return View(igraci);
 
@@ -201,6 +205,49 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                 }).ToList();
 
                 return PartialView("_IgracModalEdit", igracViewModel);
+            }
+        }
+
+        public ActionResult Detail(int igracID)
+        {
+            using(var context = new KosarkaContext())
+            {
+                var igrac = context.Igracs.Find(igracID);
+
+                var igracViewModel = new IgracDetailViewModel()
+                {
+                    TimNaziv = igrac.Tim.Naziv,
+                    BrojDresa = igrac.BrojDresa,
+                    DatumRodjenja = igrac.DatumRodjenja,
+                    Drzava = igrac.Drzava,
+                    GradNaziv = igrac.Grad.Naziv,
+                    IgracID = igrac.IgracID,
+                    Ime = igrac.Ime,
+                    PozicijaNaziv = igrac.Pozicija.Naziv,
+                    PozicijaSkraceno = igrac.Pozicija.SkraceniNaziv,
+                    Prezime = igrac.Prezime,
+                    SlikaID = igrac.SlikaID
+                };
+
+                ViewBag.Utakmice = igrac.UcinakIgracas.Select(u =>
+                new UtakmiceIgracaViewModel()
+                {
+                    Asistencije = u.Asistencije,
+                    DatumOdigravanja = u.Utakmica.DatumOdigravanja,
+                    BrojMinuta = u.BrojMinuta,
+                    DomaciTim = u.Utakmica.DomaciTimPokazatelj.Naziv,
+                    GostujuciTim = u.Utakmica.GostujuciTimPokazatelj.Naziv,
+                    Poeni = u.Poeni,
+                    PoeniDomaciTim = u.Utakmica.PoeniDomaciTim,
+                    PoeniGostujuciTim = u.Utakmica.PoeniGostujuciTim,
+                    Skokovi = u.Skokovi,
+                    DomaciTimID = u.Utakmica.DomaciTimPokazatelj.TimID,
+                    GostujuciTimID = u.Utakmica.GostujuciTimPokazatelj.TimID,
+                    NjegovTimID = u.Igrac.TimID
+                }).ToList();
+
+                return View(igracViewModel);
+
             }
         }
 

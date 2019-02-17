@@ -24,7 +24,8 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Controllers
                     NazivStadiona = t.NazivStadiona,
                     Trener = t.Trener,
                     SlikaID = t.SlikaID,
-                    BrojGledalaca = t.BrojGledalaca
+                    BrojGledalaca = t.BrojGledalaca,
+                    GradNaziv = t.Grad.Naziv
                 }).ToList();
                 return View(timovi);
             }

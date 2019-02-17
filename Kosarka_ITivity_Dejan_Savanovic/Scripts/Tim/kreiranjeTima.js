@@ -32,6 +32,7 @@
         $.post("/Tim/Edit", data, function (result, status) {
             if (result.Success) {
                 $("#modalEditTim").modal("hide");
+                document.location.reload();
             } else {
                 console.log(result.Message);
             }
@@ -70,6 +71,7 @@
         $.post("/Tim/Create", data, function (result, status) {
             if (result.Success) {
                 $("#mdalKreirajTim").modal("hide");
+                document.location.reload();
             } else {
                 console.log(result.Message);
             }

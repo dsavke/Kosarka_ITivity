@@ -1,0 +1,116 @@
+﻿@model Kosarka_ITivity_Dejan_Savanovic.Models.UcinakIgracaViewModel
+
+<div class="col">
+    <div class="col-12 pt-2 pl-5 pr-5 pb-3">
+
+        @Html.Hidden("txtUtakmicaID", Model.UtakmicaID)
+        @Html.Hidden("txtTimID", Model.TimID)
+        @Html.Hidden("txtIgracID", Model.IgracID)
+        @Html.Hidden("txtUcinakIgracaID", Model.UcinakIgracaID)
+
+        <div class="col-11 bg-transparent ml-3 mr-3 mt-0" style="height:150px">
+
+            <img src='@Url.Action("GetImage", "Pocetna", new { id = Model.SlikaID })' id="txtSlika" height="150" width="150" style="display:block;margin:auto;
+                                " class="center-element" />
+
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Minute</label>
+            <input class="form-control col-9" type="text" id="txtMinute" name="txtMinute" value="@Model.BrojMinuta"/>
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Poeni</label>
+            <input class="form-control col-9" type="text" id="txtPoeni" name="txtPoeni" value="@Model.Poeni"/>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-3 pl-0">
+                <label class="col-12 h6">Slobodna</label>
+            </div>
+
+            <div class="col-9 pl-0 pr-0">
+
+                <div class="input-group">
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Pogodjeno" name="txtPogodjenihSlobodnihBacanja" id="txtPogodjenihSlobodnihBacanja" value="@Model.PogodjenihSlobodnihBacanja">
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="color:white">/</span>
+                    </div>
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Ukupno" name="txtUkupnoSlobodnihBacanja" id="txtUkupnoSlobodnihBacanja" value="@Model.UkupnoSlobodnihBacanja"/>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-3 pl-0">
+                <label class="col-12 h6">Dvojke</label>
+            </div>
+
+            <div class="col-9 pl-0 pr-0">
+
+                <div class="input-group">
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Pogodjeno" name="txtPogodjenihDvojki" id="txtPogodjenihDvojki" value="@Model.PogodjenihDvojki">
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="color:white">/</span>
+                    </div>
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Ukupno" name="txtUkupnoDvojki" id="txtUkupnoDvojki" value="@Model.UkupnoDvojki"/>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-3 pl-0">
+                <label class="col-12 h6">Trojke</label>
+            </div>
+
+            <div class="col-9 pl-0 pr-0">
+
+                <div class="input-group">
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Pogodjeno" name="txtPogodjenihTrojki" id="txtPogodjenihTrojki" value="@Model.PogodjenihTrojki">
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="color:white">/</span>
+                    </div>
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Ukupno" name="txtUkupnoTrojki" id="txtUkupnoTrojki" value="@Model.UkupnoTrojki"/>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Asistencije</label>
+            <input class="form-control col-9" type="text" id="txtAsistencije" name="Asistencije" value="@Model.Asistencije"/>
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Skokovi</label>
+            <input class="form-control col-9" type="text" id="txtSkokovi" name="Skokovi" value="@Model.Skokovi"/>
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Blokade</label>
+            <input class="form-control col-9" type="text" id="txtBlokade" name="Blokade" value="@Model.Blokade"/>
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Ukradene</label>
+            <input class="form-control col-9" type="text" id="txtUkradene" name="Ukradene" value="@Model.UkradeneLopte"/>
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Izgubljene</label>
+            <input class="form-control col-9" type="text" id="txtIzgubljene" name="Izgubljene" value="@Model.IzgubljeneLopte"/>
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Faulovi</label>
+            <input class="form-control col-9" type="text" id="txtFaulovi" name="Faulovi" value="@Model.Faulova"/>
+        </div>
+
+    </div>
+</div>

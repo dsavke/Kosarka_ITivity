@@ -184,14 +184,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\IgracDetailViewModel.cs" />
     <Compile Include="Models\IgracViewModel.cs" />
     <Compile Include="Models\KoloViewModel.cs" />
     <Compile Include="Models\RangTimovaViewModel.cs" />
     <Compile Include="Models\TimViewModel.cs" />
+    <Compile Include="Models\TopListViewModel.cs" />
+    <Compile Include="Models\TopViewModel.cs" />
     <Compile Include="Models\UcinakIgracaViewModel.cs" />
     <Compile Include="Models\UtakmicaDetaljiViewModel.cs" />
     <Compile Include="Models\UtakmicaPrikazViewModel.cs" />
     <Compile Include="Models\UtakmicaViewModel.cs" />
+    <Compile Include="Models\UtakmiceIgracaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1857,6 +1861,8 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\Tim\kreiranjeTima.js" />
+    <Content Include="Scripts\Ucinak\ucinakIzgled.js" />
+    <Content Include="Scripts\Ucinak\ucinakPoeni.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -1902,6 +1908,9 @@
     <Content Include="Views\Igrac\_IgracModalEdit.cshtml" />
     <Content Include="Views\Utakmica\Index.cshtml" />
     <Content Include="Views\Utakmica\_GetUcinakIgraca.cshtml" />
+    <Content Include="Views\Utakmica\_UcinakCreate.cshtml" />
+    <Content Include="Views\Utakmica\_UcinakEdit.cshtml" />
+    <Content Include="Views\Igrac\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

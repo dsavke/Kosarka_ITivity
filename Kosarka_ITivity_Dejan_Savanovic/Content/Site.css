@@ -37,3 +37,13 @@ textarea {
 .fa-trash:hover {
     color: #DF691A;
 }
+
+.fa-user-edit:hover {
+    color: #DF691A;
+}
+
+.btn-dodaj-igraca:hover {
+    background-color: #DF691A;
+    border-width: 0px;
+    border-color: transparent;
+}

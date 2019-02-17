@@ -16,7 +16,5 @@ namespace Kosarka_ITivity_Dejan_Savanovic.Models
         public int? KosRazlika { get; set; }
         public int? Bodovi { get; set; }
 
-        //lista top pet njaboljih strelaca
-
     }
 }

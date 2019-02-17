@@ -2,57 +2,484 @@
 
 @{
     ViewBag.Title = "Index";
+    var i = 1;
+    var topSkoroeri = ViewBag.Top5Skorera as List<Kosarka_ITivity_Dejan_Savanovic.Models.TopListViewModel>;
+    var top5Skokovi = ViewBag.Top5Skokova as List<Kosarka_ITivity_Dejan_Savanovic.Models.TopListViewModel>;
+    var top5Asistencije = ViewBag.Top5Asistencije as List<Kosarka_ITivity_Dejan_Savanovic.Models.TopListViewModel>;
+    var top5Ukradene = ViewBag.Top5Ukradene as List<Kosarka_ITivity_Dejan_Savanovic.Models.TopListViewModel>;
+    var top5Blokade = ViewBag.Top5Blokade as List<Kosarka_ITivity_Dejan_Savanovic.Models.TopListViewModel>;
+    var top53pt = ViewBag.Top53pt as List<Kosarka_ITivity_Dejan_Savanovic.Models.TopListViewModel>;
+    var top52pt = ViewBag.Top52pt as List<Kosarka_ITivity_Dejan_Savanovic.Models.TopListViewModel>;
+    var top5ft = ViewBag.Top5ft as List<Kosarka_ITivity_Dejan_Savanovic.Models.TopListViewModel>;
+    var mvpRace = ViewBag.mvpRace as List<Kosarka_ITivity_Dejan_Savanovic.Models.TopViewModel>;
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table mt-4">
     <tr>
-        <th>
+        <th scope="col">
+            #
+        </th>
+        <th scope="col">
 
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Naziv)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.BrojPobjeda)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.BrojPoraza)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.KosRazlika)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Bodovi)
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <img width="20" height="20" src='@Url.Action("GetImage", "Pocetna", new { id = item.SlikaID })' />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Naziv)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrojPobjeda)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrojPoraza)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KosRazlika)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bodovi)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td scope="row">@i</td>
+            <td scope="row">
+                <img width="20" height="20" src='@Url.Action("GetImage", "Pocetna", new { id = item.SlikaID })' />
+            </td>
+            <td scope="row">
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td scope="row">
+                @Html.DisplayFor(modelItem => item.BrojPobjeda)
+            </td>
+            <td scope="row">
+                @Html.DisplayFor(modelItem => item.BrojPoraza)
+            </td>
+            <td scope="row">
+                @Html.DisplayFor(modelItem => item.KosRazlika)
+            </td>
+            <td scope="row">
+                @Html.DisplayFor(modelItem => item.Bodovi)
+            </td>
+        </tr>
+        i++;
+    }
 
 </table>
+
+
+
+<div class="mt-3">
+    <p>MVP Trka</p>
+
+    <div class="row">
+
+        <div class="col-2">
+            <img src="@Url.Action("GetImage", "Pocetna", new { id = mvpRace.ElementAt(0).SlikaID })" />
+        </div>
+
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ime i prezime</th>
+                        <th scope="col">Tim</th>
+                        <th scope="col">MVP Bodovi</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        i = 1;
+
+                        foreach (var item in mvpRace)
+                        {
+
+                            <tr>
+                                <td scope="row">@i</td>
+                                <td scope="row">@item.ImeIPrezime</td>
+                                <td scope="row">@item.TimNaziv</td>
+                                <td scope="row">@item.MVPBodovi</td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+    
+
+
+<div class="mt-3">
+    <p>Top 5 skorera</p>
+
+    <div class="row">
+
+        <div class="col-2">
+            <img src="@Url.Action("GetImage", "Pocetna", new { id = topSkoroeri.ElementAt(0).SlikaID })" />
+        </div>
+
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ime i prezime</th>
+                        <th scope="col">Tim</th>
+                        <th scope="col">Prosjek poena</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        i = 1;
+
+                        foreach (var item in topSkoroeri)
+                        {
+
+                            <tr>
+                                <td scope="row">@i</td>
+                                <td scope="row">@item.ImeIPrezime</td>
+                                <td scope="row">@item.TimNaziv</td>
+                                <td scope="row">@item.Poeni</td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="mt-3">
+    <p>Top 5 po skokovima</p>
+
+    <div class="row">
+
+        <div class="col-2">
+            <img src="@Url.Action("GetImage", "Pocetna", new { id = top5Skokovi.ElementAt(0).SlikaID })" />
+        </div>
+
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ime i prezime</th>
+                        <th scope="col">Tim</th>
+                        <th scope="col">Prosjek skokova</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        i = 1;
+
+                        foreach (var item in top5Skokovi)
+                        {
+
+                            <tr>
+                                <td scope="row">@i</td>
+                                <td scope="row">@item.ImeIPrezime</td>
+                                <td scope="row">@item.TimNaziv</td>
+                                <td scope="row">@item.Skokovi</td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="mt-3">
+    <p>Top 5 po asistencijam</p>
+
+    <div class="row">
+
+        <div class="col-2">
+            <img src="@Url.Action("GetImage", "Pocetna", new { id = top5Asistencije.ElementAt(0).SlikaID })" />
+        </div>
+
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ime i prezime</th>
+                        <th scope="col">Tim</th>
+                        <th scope="col">Prosjek asistencija</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        i = 1;
+
+                        foreach (var item in top5Asistencije)
+                        {
+
+                            <tr>
+                                <td scope="row">@i</td>
+                                <td scope="row">@item.ImeIPrezime</td>
+                                <td scope="row">@item.TimNaziv</td>
+                                <td scope="row">@item.Asistencije</td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="mt-3">
+    <p>Top 5 po ukradenim loptama</p>
+
+    <div class="row">
+
+        <div class="col-2">
+            <img src="@Url.Action("GetImage", "Pocetna", new { id = top5Ukradene.ElementAt(0).SlikaID })" />
+        </div>
+
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ime i prezime</th>
+                        <th scope="col">Tim</th>
+                        <th scope="col">Prosjek ukradenih</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        i = 1;
+
+                        foreach (var item in top5Ukradene)
+                        {
+
+                            <tr>
+                                <td scope="row">@i</td>
+                                <td scope="row">@item.ImeIPrezime</td>
+                                <td scope="row">@item.TimNaziv</td>
+                                <td scope="row">@item.Ukradene</td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="mt-3">
+    <p>Top 5 po blokadama</p>
+
+    <div class="row">
+
+        <div class="col-2">
+            <img src="@Url.Action("GetImage", "Pocetna", new { id = top5Blokade.ElementAt(0).SlikaID })" />
+        </div>
+
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ime i prezime</th>
+                        <th scope="col">Tim</th>
+                        <th scope="col">Prosjek blokada</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        i = 1;
+
+                        foreach (var item in top5Blokade)
+                        {
+
+                            <tr>
+                                <td scope="row">@i</td>
+                                <td scope="row">@item.ImeIPrezime</td>
+                                <td scope="row">@item.TimNaziv</td>
+                                <td scope="row">@item.Blokade</td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="mt-3">
+    <p>Top 5 po sutu za 3</p>
+
+    <div class="row">
+
+        <div class="col-2">
+            <img src="@Url.Action("GetImage", "Pocetna", new { id = top53pt.ElementAt(0).SlikaID })" />
+        </div>
+
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ime i prezime</th>
+                        <th scope="col">Tim</th>
+                        <th scope="col">Prosjek suta za 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        i = 1;
+
+                        foreach (var item in top53pt)
+                        {
+
+                            <tr>
+                                <td scope="row">@i</td>
+                                <td scope="row">@item.ImeIPrezime</td>
+                                <td scope="row">@item.TimNaziv</td>
+                                <td scope="row">@item.Sut3pt</td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="mt-3">
+    <p>Top 5 po sutu za 2</p>
+
+    <div class="row">
+
+        <div class="col-2">
+            <img src="@Url.Action("GetImage", "Pocetna", new { id = top52pt.ElementAt(0).SlikaID })" />
+        </div>
+
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ime i prezime</th>
+                        <th scope="col">Tim</th>
+                        <th scope="col">Prosjek suta za 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        i = 1;
+
+                        foreach (var item in top52pt)
+                        {
+
+                            <tr>
+                                <td scope="row">@i</td>
+                                <td scope="row">@item.ImeIPrezime</td>
+                                <td scope="row">@item.TimNaziv</td>
+                                <td scope="row">@item.Sut2pt</td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="mt-3">
+    <p>Top 5 po sutu za slobodna</p>
+
+    <div class="row">
+
+        <div class="col-2">
+            <img src="@Url.Action("GetImage", "Pocetna", new { id = top5ft.ElementAt(0).SlikaID })" />
+        </div>
+
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ime i prezime</th>
+                        <th scope="col">Tim</th>
+                        <th scope="col">Prosjek suta za slobodna</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        i = 1;
+
+                        foreach (var item in top5ft)
+                        {
+
+                            <tr>
+                                <td scope="row">@i</td>
+                                <td scope="row">@item.ImeIPrezime</td>
+                                <td scope="row">@item.TimNaziv</td>
+                                <td scope="row">@item.Sutft</td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

@@ -19,7 +19,7 @@
     console.log($("#pocetniDatum").val());
 
     const fpDatum = flatpickr("#DatumOdigravanja", {
-        defaultDate: $("#pocetniDatum").val(),
+        //defaultDate: $("#pocetniDatum").val(),
         minDate: $("#pocetniDatum").val(),
         maxDate: $("#krajniDatum").val()
     });

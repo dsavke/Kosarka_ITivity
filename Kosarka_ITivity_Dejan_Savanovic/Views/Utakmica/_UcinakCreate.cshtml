@@ -1,0 +1,135 @@
+﻿@model Kosarka_ITivity_Dejan_Savanovic.Models.UcinakIgracaViewModel
+
+<div class="col">
+    <div class="col-12 pt-2 pl-5 pr-5 pb-3">
+
+        @Html.HiddenFor(model => model.UtakmicaID)
+        @Html.HiddenFor(model => model.TimID)
+
+        <div class="col-11 bg-transparent ml-3 mr-3 mt-0" style="height:150px">
+
+            <img src='@Url.Action("GetImage", "Pocetna", new { id = 11 })' id="Slika" height="150" width="150" style="display:block;margin:auto;
+                                " class="center-element" />
+
+        </div>
+
+
+        <div class="row mt-5 ml-0">
+
+            <select id="IgracID" class="form-control col-12 pl-0" name="IgracID">
+                @{
+                    foreach (var item in ViewBag.IgraciZaUtakmicu as List<Kosarka_ITivity_Dejan_Savanovic.Models.IgracViewModel>)
+                    {
+                        <option id="@item.TimID" data-url="@Url.Action("GetImage", "Pocetna", new { id = item.SlikaID })"
+                                value="@item.IgracID">
+                            @item.Ime  @item.Prezime
+                        </option>
+                    }
+                }
+            </select>
+
+        </div>
+
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Minute</label>
+            <input class="form-control col-9" type="text" id="Minute" name="Minute" />
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Poeni</label>
+            <input class="form-control col-9" type="text" id="Poeni" name="Poeni" />
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-3 pl-0">
+                <label class="col-12 h6">Slobodna</label>
+            </div>
+
+            <div class="col-9 pl-0 pr-0">
+
+                <div class="input-group">
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Pogodjeno" name="PogodjenihSlobodnihBacanja" id="PogodjenihSlobodnihBacanja" value="">
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="color:white">/</span>
+                    </div>
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Ukupno" name="UkupnoSlobodnihBacanja" id="UkupnoSlobodnihBacanja" />
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-3 pl-0">
+                <label class="col-12 h6">Dvojke</label>
+            </div>
+
+            <div class="col-9 pl-0 pr-0">
+
+                <div class="input-group">
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Pogodjeno" name="PogodjenihDvojki" id="PogodjenihDvojki" value="">
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="color:white">/</span>
+                    </div>
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Ukupno" name="UkupnoDvojki" id="UkupnoDvojki" />
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-3 pl-0">
+                <label class="col-12 h6">Trojke</label>
+            </div>
+
+            <div class="col-9 pl-0 pr-0">
+
+                <div class="input-group">
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Pogodjeno" name="PogodjenihTrojki" id="PogodjenihTrojki" value="">
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="color:white">/</span>
+                    </div>
+                    <input type="text" class="form-control col-6 poeni-igrac" placeholder="Ukupno" name="UkupnoTrojki" id="UkupnoTrojki" />
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Asistencije</label>
+            <input class="form-control col-9" type="text" id="Asistencije" name="Asistencije" />
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Skokovi</label>
+            <input class="form-control col-9" type="text" id="Skokovi" name="Skokovi" />
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Blokade</label>
+            <input class="form-control col-9" type="text" id="Blokade" name="Blokade" />
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Ukradene</label>
+            <input class="form-control col-9" type="text" id="Ukradene" name="Ukradene" />
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Izgubljene</label>
+            <input class="form-control col-9" type="text" id="Izgubljene" name="Izgubljene" />
+        </div>
+
+        <div class="row mt-4">
+            <label class="col-3 h6 pl-3 pt-1">Faulovi</label>
+            <input class="form-control col-9" type="text" id="Faulovi" name="Faulovi" />
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Scripts/Ucinak/ucinakIzgled.js"></script>
+<script src="~/Scripts/Ucinak/ucinakPoeni.js"></script>

@@ -31,6 +31,7 @@ namespace Kosarka_ITivity_Dejan_Savanovic.DBModels
         public byte Blokade { get; set; }
         public byte IzgubljeneLopte { get; set; }
         public byte UkradeneLopte { get; set; }
+        public int Poeni { get; set; }
     
         public virtual Igrac Igrac { get; set; }
         public virtual Tim Tim { get; set; }

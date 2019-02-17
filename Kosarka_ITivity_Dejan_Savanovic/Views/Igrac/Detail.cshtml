@@ -1,0 +1,79 @@
+﻿@model Kosarka_ITivity_Dejan_Savanovic.Models.IgracDetailViewModel
+
+@{
+    ViewBag.Title = "Detail";
+    var utakmice = ViewBag.Utakmice as List<Kosarka_ITivity_Dejan_Savanovic.Models.UtakmiceIgracaViewModel>;
+}
+
+    <div class="container mt-4">
+
+        <div class="row">
+
+            <div class="col-3 bg-dark mr-4">
+                <div>
+                    <div>
+                        <img src="@Url.Action("GetImage", "Pocetna", new { id = Model.SlikaID})" class="ml-3 col-10" />
+                    </div>
+
+                    <div class="mt-4 ml-3">
+                        <p class="h5">Ime: <span style="color:#DF691A">@Model.Ime</span></p>
+                        <p class="h5">Prezime: <span style="color:#DF691A">@Model.Prezime</span></p>
+                        <p class="h5">Tim: <span style="color:#DF691A">@Model.TimNaziv</span></p>
+                        <p class="h5">Grad: <span style="color:#DF691A">@Model.GradNaziv</span></p>
+                        <p class="h5">Datum rodjenja: <span style="color:#DF691A">@Model.DatumRodjenja.ToShortDateString()</span></p>
+                        <p class="h5">Pozicija: <span style="color:#DF691A">@Model.PozicijaNaziv</span></p>
+                        <p class="h5">Broj dresa: <span style="color:#DF691A">@Model.BrojDresa</span></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-8 bg-dark pr-3">
+
+                <p class="h4" style="color:#DF691A">Utakmice</p>
+
+                <table class="table table-bordered table-responsive-md table-responsive-lg table-responsive-xl">
+
+                    <thead>
+
+                        <tr>
+                            <th scope="col">Domacin</th>
+                            <th scope="col">Rezultat</th>
+                            <th scope="col">Gosti</th>
+                            <th scope="col">Datum</th>
+                            <th scope="col">Minute</th>
+                            <th scope="col">Poeni</th>
+                            <th scope="col">Asistencije</th>
+                            <th scope="col">Skokovi</th>
+                        </tr>
+
+                    </thead>
+
+                    @foreach (var item in utakmice)
+                    {
+
+                        <tr>
+                            <td scope="row" style="@(item.DomaciTimID == item.NjegovTimID?"color:#DF691A;font-weight:bold":"")" >@item.DomaciTim</td>
+                            <td scope="row">@item.PoeniDomaciTim : @item.PoeniGostujuciTim</td>
+                            <td scope="row" style="@(item.GostujuciTimID == item.NjegovTimID?"color:#DF691A;font-weight:bold":"")">@item.GostujuciTim</td>
+                            <td scope="row">@item.DatumOdigravanja.ToShortDateString()</td>
+                            <td scope="row">@item.BrojMinuta</td>
+                            <td scope="row">@item.Poeni</td>
+                            <td scope="row">@item.Asistencije</td>
+                            <td scope="row">@item.Skokovi</td>
+                        </tr>
+
+                    }
+
+                </table>
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
